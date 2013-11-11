@@ -29,6 +29,7 @@ gem 'omniauth-facebook'
 # Projects
 gem 'bootstrap-wysihtml5-rails', branch: 'b3', github: 'Nerian/bootstrap-wysihtml5-rails'
 gem "paperclip", "~> 3.0"
+gem 'aws-sdk'
 
 # Gems used only for assets and not required
 # in production environments by default.
