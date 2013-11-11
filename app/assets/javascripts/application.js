@@ -12,5 +12,27 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-wysihtml5/b3
+//= require bootstrap-wysihtml5/locales
 //= require bootstrap
 //= require_tree .
+
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=478161788942376";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+$(".alert").alert()
+
+
+$(document).ready(function(){
+
+        $('.wysihtml5').each(function(i, elem) {
+          $(elem).wysihtml5();
+        });
+
+})
