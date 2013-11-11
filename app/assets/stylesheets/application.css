@@ -10,5 +10,5 @@
  *
  *= require_self
  *= require bootstrap-wysihtml5/b3
- *= require_tree .
+ *= require pages
  */
