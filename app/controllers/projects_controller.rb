@@ -91,4 +91,8 @@ class ProjectsController < ApplicationController
       format.json { render json: @project }
     end
   end
+
+  def project_params
+     params.require(:project).permit(:description, :thumbnail)
+  end
 end

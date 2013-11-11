@@ -55,6 +55,16 @@
 
       <%= render 'projects/action_card' %>
       <%= render 'projects/stakeholder_card' %>
+      <div class="col-sm-3 project-box" style="margin-left: 5%; width: 30%; margin-top: 20px;">
+        <div class="project-box-content">
+          <%= image_tag @project.thumbnail.url(:medium), width: "100%" %>
+          <div class="form-group">
+            <%= f.label "Thumbnail image" %>
+            <%= f.file_field :thumbnail %>
+            <p class="help-block"><small>Ideal size: 560px x 400px, JPG/PNG/GIF no larger than 5mb</small></p>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
