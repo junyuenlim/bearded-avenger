@@ -1,0 +1,141 @@
+<div class="landing-background">
+<div class="container">
+	<div class="row" style="margin-top: 100px;">
+		<div class="col-xs-6">
+			<div class="row" style="margin-top: 20px;">
+				<img src="/assets/brick.svg" height="100" class="pull-left">
+				<h1 class="navbar-brand" style="font-size: 2.5em; line-height: 1.6em; margin-right: 0px; padding-right: 5px;">CrowdCities</h1><h5 style="line-height: 1.6em; color: red; font-weight: 200; font-size: 1.3em; margin-top: 20px;">beta</h5>
+			</div>
+			
+			<h2 class="lead" style="font-size: 2.5em; color: grey; margin-top: 50px;">Discuss Urban Issues.</br>
+			Support Urban Initiatives.</br>
+			Contribute to your city.</h2>
+		</div>
+
+		<div class="col-xs-1"></div>
+
+		<div class="tab-content">
+			<div class="col-xs-5 tab-pane active" id="signup">
+				<div class="panel panel-default login-signup-box">
+				  
+					<div class="panel-heading">
+						<div class="panel-title row">
+							<div class="col-xs-9">
+								<h1>Sign Up</h1>
+							</div>
+							<p class="help-block" style="margin-top: 25px;"><small><a href="#login" data-toggle="tab">Log In</a></small></p>
+						</div>
+					</div>
+
+					<div class="panel-body login-signup-form" style="padding-bottom: 0px;">
+
+						<div style="margin: 20px 20%;">
+							<%= link_to image_tag("/assets/graphics/fb-login.png", :width => '200px'), user_omniauth_authorize_path(:facebook) %>
+						</div>
+
+						<div class="separator">
+							<p>or</p>
+						</div>
+
+					</div>
+
+					<div id="accordion">
+				  		<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+				        	<p class="text-center" style="margin-bottom: 20px;">Sign Up with E-mail</p>
+				        </a>
+
+				        <div id="collapseOne" class="panel-collapse collapse">
+						  	<div class="panel-body login-signup-form" style="padding-top: 0px;">
+						    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+						  		<%= devise_error_messages! %>
+
+						      <div class="form-group col-sm-12">
+						        <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First name" %>
+						      </div>
+
+						      <div class="form-group col-sm-12">
+						        <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Last name" %>
+						      </div>
+
+						      <div class="form-group col-sm-12">
+						        <%= f.text_field :location, autofocus: true, class: "form-control", placeholder: "City" %>
+						      </div>
+
+						      <div class="form-group col-sm-12">
+						        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "E-mail" %>
+						      </div>
+
+						      <div class="form-group col-sm-12">
+						        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+						      </div>
+
+						      <div class="form-group col-sm-12">
+						        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password confirmation" %>
+						      </div>
+
+						      <div class="form-group col-sm-12 text-center">
+						        <%= f.submit "Sign up", class: "btn btn-primary" %>
+						      </div>
+						    <% end %>
+						    </div>
+
+							<div class="panel-footer">
+								<p class="help-block text-center" style="line-height: 1em;"><small>By creating an account, I accept CrowdCities's <a href="">Terms of Service</a> and <a href="">Privacy Policy</a>.</small></p>
+							</div>
+
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-5 tab-pane" id="login">
+				<div class="panel panel-default login-signup-box">
+				  <div class="panel-heading">
+				  	<div class="panel-title row">
+				  		<div class="col-xs-9">
+				  			<h1>Log In</h1>
+				  		</div>
+				    	
+				    	<p class="help-block" style="margin-top: 25px;"><small><a href="#signup" data-toggle="tab">Sign Up</a></small></p>
+				    </div>
+				  </div>
+
+				  <div class="panel-body login-signup-form">
+
+				  	<div style="margin: 20px 20%;">
+				  		<%= link_to image_tag("/assets/graphics/fb-login.png", :width => '200px'), user_omniauth_authorize_path(:facebook) %>
+				  	</div>
+
+				  	<div class="separator">
+				  		<p>or</p>
+				  	</div>
+
+				  	<div>
+					    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+					      <div class="form-group col-sm-12">
+					        <%= f.email_field :email, class: "form-control", :autofocus => true, placeholder: "E-mail" %>
+					      </div>
+
+					      <div class="form-group col-sm-12">
+					        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+					      </div>
+
+					      <div class="form-group col-sm-12">
+					      	<%= f.submit "Sign in", class: "btn btn-primary pull-left" %>
+					        <div class="checkbox pull-right">
+					          <%= f.check_box :remember_me %>
+					          <%= f.label :remember_me %>
+					        </div>
+					      </div>
+
+					    <% end %>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

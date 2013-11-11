@@ -9,8 +9,11 @@ ActiveadminTest::Application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
 
+  authenticated :user do
+    root :to => "projects#index"
+  end
 
-  root :to => 'pages#index'
+  root :to => 'pages#welcome'
 
   get 'about' => "pages#about"
 
