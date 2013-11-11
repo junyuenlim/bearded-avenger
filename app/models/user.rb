@@ -14,10 +14,26 @@ class User < ActiveRecord::Base
 
   has_many :projects, :dependent => :destroy
 
-  	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-	  user = User.where(:provider => auth.provider, :uid => auth.uid).first
-	  unless user
-	    user = User.create(name:auth.extra.raw_info.name,
+  has_many :relationships, foreign_key: "follower_id"
+  has_many :followed_projects, through: :relationships, source: :project
+
+  def following_project?(project)
+    relationships.find_by_follower_id(project.id)
+  end
+
+  def follow_project!(project)
+    relationships.create!(followedproject_id: project.id)
+  end
+
+  def unfollow_project!(project)
+    relationships.find_by_followedproject_id(project.id).destroy
+  end
+
+
+	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      user = User.create(name:auth.extra.raw_info.name,
                             first_name:auth.extra.raw_info.first_name,
                             middle_name:auth.extra.raw_info.middle_name,
                             last_name:auth.extra.raw_info.last_name,
@@ -31,13 +47,13 @@ class User < ActiveRecord::Base
                             fb_verified:auth.extra.raw_info.verified,
                             fb_link:auth.extra.raw_info.link,
                             currency:auth.extra.raw_info.currency,
-					         provider:auth.provider,
-					         uid:auth.uid,
-					         email:auth.info.email,
-					         password:Devise.friendly_token[0,20]
+  				         provider:auth.provider,
+  				         uid:auth.uid,
+  				         email:auth.info.email,
+  				         password:Devise.friendly_token[0,20]
          )
-	  end
-	  user
+  	  end
+  	  user
 	end
 
 	def self.new_with_session(params, session)

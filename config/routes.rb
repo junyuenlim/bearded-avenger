@@ -1,6 +1,11 @@
 ActiveadminTest::Application.routes.draw do
 
-  resources :projects
+  resources :projects do
+      member do
+      get :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
 
 
   root :to => 'pages#index'

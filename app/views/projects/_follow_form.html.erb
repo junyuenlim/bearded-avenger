@@ -1,0 +1,12 @@
+<% unless current_user == @project.user %>
+  <div id="follow_form">
+  <% if current_user.following_project?(@project) %>
+  <!-- Still not working -->
+    <%= render 'unfollow' %>
+  <% else %>
+    <%= render 'follow' %>
+  <% end %>
+  </div>
+<% else %>
+You are Project Owner
+<% end %>
