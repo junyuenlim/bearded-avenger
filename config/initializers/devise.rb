@@ -231,4 +231,10 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
   config.secret_key = '5cc0f197c2bf3af242ea082dd295ed239303216491cc7100df53338cad4ddc657ac7b4791836a21f9c6181822fa90bc90cca8c906dcfe1e09c5a1c64de67c62c'
+
+  
+  require "omniauth-facebook"
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET']
+    {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
 end

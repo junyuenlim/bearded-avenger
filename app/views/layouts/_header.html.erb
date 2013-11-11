@@ -21,7 +21,6 @@
                 <span class="caret" style="margin-top: 0px;"></span></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                     <li role="presentation" class="dropdown-header">Name</li>
-                    <!--<li><%= link_to "View Profile", current_user %></li>-->
                     <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
                     <li class="divider"></li>
                     <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
@@ -32,6 +31,7 @@
 	        <% else %>
 	          <li><%= link_to "Log In", new_user_session_path %></li>
 	          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+	          <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
 	        <% end %>
 	    </ul>
     </div>
