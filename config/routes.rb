@@ -1,5 +1,8 @@
 ActiveadminTest::Application.routes.draw do
 
+  resources :projects
+
+
   root :to => 'pages#index'
 
   get 'about' => "pages#about"

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
                     :fb_link, :currency, :fb_verified
   # attr_accessible :title, :body
 
+  has_many :projects, :dependent => :destroy
+
   	def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
 	  user = User.where(:provider => auth.provider, :uid => auth.uid).first
 	  unless user
