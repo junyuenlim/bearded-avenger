@@ -9,7 +9,7 @@
 				<img src="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-ash2/843908_527145123975229_494407850_o.jpg" height="50">
 			</div>
 			<div class="author-name">
-				<h4><%= project.user.first_name %> <%= project.user.last_name %></h4>
+				<h4><%= link_to project.user.name, project.user %></h4>
 				<p><%= project.user.first_name %> <%= project.user.last_name %></p>
 			</div>
 		</div>
