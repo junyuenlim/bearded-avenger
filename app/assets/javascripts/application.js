@@ -30,9 +30,11 @@ $(".alert").alert()
 
 
 $(document).ready(function(){
-
         $('.wysihtml5').each(function(i, elem) {
           $(elem).wysihtml5();
         });
-
 })
+
+$(document).ready(function () {
+  $("div[id^='flash-message']").fadeOut(3000);
+});

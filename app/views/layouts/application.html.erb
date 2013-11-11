@@ -9,7 +9,7 @@
 	<% if user_signed_in? %><%= render 'layouts/header' %><% end %>
 	<div class="container">
 		<% flash.each do |name, msg| %>
-			<%= content_tag(:div, msg, class: "alert alert-info") %>
+			<%= content_tag(:div, msg, class: "alert alert-info", id: "flash-message") %>
 		<% end %>
 	</div>
 		<%= yield %>
