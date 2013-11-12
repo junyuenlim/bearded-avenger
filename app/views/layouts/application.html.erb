@@ -6,7 +6,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if user_signed_in? %><%= render 'layouts/header' %><% end %>
+	<% if user_signed_in? %>
+		<%= render 'layouts/header' %>
+	<% else %>
+		<% unless current_page?(root_path) %>
+			<%= render 'layouts/header' %>
+		<% end %>
+	<% end %>
+
+
 	<div class="container">
 		<% flash.each do |name, msg| %>
 			<%= content_tag(:div, msg, class: "alert alert-info", id: "flash-message") %>
