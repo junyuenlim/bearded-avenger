@@ -38,6 +38,7 @@ p {}
 
 #pages {padding-top: 20px; min-height: 700px;}
 .container {max-width: none !important; width: 960px;}
+#projects .container {padding-left: 0px;}
 .row {padding-left: 15px; padding-right: 15px;}
 
 #nav-link {border-left: 1px solid #ccc;}
@@ -158,6 +159,7 @@ ul.nav-li {padding-left: 0px;}
 }
 .project-card .author {height: 50px;}
 .project-card .author-name > p {font-size: 11px;}
+.project-card img:hover {opacity:0.8;}
 .project-page .stat {font-size: 3em; font-weight: 700; margin: 0px;}
 
 .project-card > img {
@@ -225,7 +227,7 @@ ul.nav-li {padding-left: 0px;}
 	padding: 0px; 
 	border: 1px solid #ccc;
 }
-.project-box-content {padding: 10px 20px; width: 100%;}
+.project-box-content {padding: 20px 20px; width: 100%;}
 
 .project-icon-right {
 	height: 35px; 

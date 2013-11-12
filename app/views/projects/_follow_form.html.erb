@@ -1,5 +1,5 @@
 <% unless current_user == @project.user %>
-  <div id="follow_form">
+  <div class="text-center" id="follow_form">
   <% if current_user.following_project?(@project) %>
   <!-- Still not working -->
     <%= render 'unfollow' %>

@@ -1,9 +1,10 @@
 <div class="project-card">
-	<%= image_tag project.thumbnail.url(:medium), width: "100%" %>
+	<%= link_to(project) do %><%= image_tag project.thumbnail.url(:medium), width: "100%" %><% end %>
 	<div class="project-info">
 		<div class="project-title">
 			<%= link_to(project) do %><h4><strong><%= project.title %></strong></h4></a><% end %>
 		</div>
+		<!--
 		<div class="author">
 			<div class="user-avatar pull-left">
 				<%= image_tag project.user.avatar.url(:thumb), width: "50", class: "img-rounded" %>
@@ -13,5 +14,6 @@
 				<p><%= project.user.first_name %> <%= project.user.last_name %></p>
 			</div>
 		</div>
+		-->
 	</div>
 </div>
