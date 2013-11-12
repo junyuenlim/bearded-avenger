@@ -16,11 +16,6 @@ class User < ActiveRecord::Base
   has_many :relationships, foreign_key: "follower_id"
   has_many :followed_projects, through: :relationships, source: :project
   has_attached_file :avatar, styles: { :thumb => ["200x200#", :jpg] },
-                    :storage => :s3,
-                    :bucket => "hungryhippie",
-                    :s3_credentials => S3_CREDENTIALS,
-                    :url  => "/users/:id/avatar/:style/:basename.:extension",
-                    :path => "/public/users/:id/avatar/:style/:basename.:extension",
                     :default_url => '/assets/graphics/missing_avatar.png'
   validates_attachment :avatar, 
                         content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] },
