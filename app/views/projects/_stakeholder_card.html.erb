@@ -3,8 +3,8 @@
 	  <span class="glyphicon glyphicon-user glyphicon-project" style="font-size: 18px; top: 6px; left: 9px; color: grey;"></span>
 	</div>
 	<div class="project-box-content">
-	  <p>by</p>
-		<strong><%= @project.user_id %></strong>
+	  <p><strong>Followers</strong></p>
+		<%= raw @project.followers.order("created_at DESC").map(&:first_name).join(', ') %>
 	</div>
 
 </div>

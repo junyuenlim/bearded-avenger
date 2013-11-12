@@ -1,2 +1,2 @@
 $("#follow_form").html("<%= escape_javascript(render('projects/unfollow')) %>")
-$("#followers").html('<%= @project.followers.count %>')
+$("#followers").html('<%= @project.followers.count %> / 10')

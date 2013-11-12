@@ -5,6 +5,7 @@ ActiveAdmin.register User do
     column "Profile pic" do |event|
       link_to(image_tag(event.avatar.url, :height => '50'))
     end
+    column :email
     column :name
     column :first_name
     column :last_name

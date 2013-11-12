@@ -2,6 +2,7 @@ ActiveadminTest::Application.routes.draw do
 
   get "users/show"
 
+  get 'category/:tag', to: 'projects#index', as: :tag
   resources :projects do
       member do
       get :followers

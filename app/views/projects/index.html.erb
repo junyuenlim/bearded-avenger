@@ -63,6 +63,12 @@
   </div>
 
   <br />
+  <!--
+  <div class="container" id="tag_cloud">
+    <% tag_cloud Project.tag_counts, %w[s m l] do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <% end %>
+  </div>-->
 
   <div class="container text-center">
     <%= link_to 'Create Project', new_project_path, class: "btn btn-lg btn-success" %>

@@ -1,10 +1,13 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :title, :thumbnail
+  attr_accessible :description, :title, :thumbnail, :tag_list
+
+  acts_as_taggable
+  acts_as_taggable_on :categories
 
   validates :user_id, presence: true
   has_attached_file :thumbnail, styles: { medium: "560x400>"},
   					default_url: '/assets/graphics/missing_thumbnail.jpg'
-  validates_attachment :thumbnail, presence: true,
+  validates_attachment :thumbnail, 
                         content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] },
                         size: { less_than: 5.megabytes }
 

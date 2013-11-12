@@ -3,11 +3,11 @@
     <span class="glyphicon glyphicon-tasks glyphicon-project"></span>
   </div>-->
 
-  <div class="project-box-content" id="followers">
-    <h3 class="stat"><%= @project.followers.count %> / 10  </h3>
-    <p>followers</p>
+  <div class="project-box-content">
+    <h3 class="stat" id="followers"><%= @project.followers.count %> / 10  </h3>
+    <p><strong>followers</strong></p>
     <div class="progress">
-      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= number_with_precision(((@project.followers.count.to_f / 10) * 100), :precision => 0) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= number_to_percentage((@project.followers.count.to_f / 5 * 100), :precision => 2) %>;">
+      <div id="followersprogress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= number_with_precision(((@project.followers.count.to_f / 10) * 100), :precision => 0) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= number_to_percentage((@project.followers.count.to_f / 10 * 100), :precision => 2) %>;">
         <span class="sr-only">40% Complete (success)</span>
       </div>
     </div>

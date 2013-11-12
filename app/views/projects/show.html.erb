@@ -6,7 +6,7 @@
     <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
       <div class="col-sm-8" style="width: 70%; padding-left: 0px;">
         <h1 style="font-weight: 700; color: white; font-family: 'Arial';"><%= @project.title %></h1>
-        <p style="color: white;">in <strong>Public Spaces</strong></p>
+        <p class="project-category">in <%= @project.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
       </div>
       <div class="col-sm-4" style="width: 20%; margin-left: 0%; padding: 0px; margin-top: 37px;">
         <% if current_user == @project.user %>
@@ -24,7 +24,7 @@
       </div>
 
       <%= render 'projects/action_card' %>
-      <!--<%= render 'projects/stakeholder_card' %>-->
+      <% unless @project.followers.count == 0 %><%= render 'projects/stakeholder_card' %><% end %>
       <%= render 'projects/thumbnail_card' %>
 
     </div>

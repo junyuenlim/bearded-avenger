@@ -6,23 +6,26 @@
   <div class="container">
     <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
       <div class="col-sm-8" style="width: 60%; padding-left: 0px;">
-		  <% if @project.errors.any? %>
-		    <div id="error_explanation">
-		      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+  		  <% if @project.errors.any? %>
+  		    <div id="error_explanation">
+  		      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-		      <ul>
-		      <% @project.errors.full_messages.each do |msg| %>
-		        <li><%= msg %></li>
-		      <% end %>
-		      </ul>
-		    </div>
-		  <% end %>
+  		      <ul>
+  		      <% @project.errors.full_messages.each do |msg| %>
+  		        <li><%= msg %></li>
+  		      <% end %>
+  		      </ul>
+  		    </div>
+  		  <% end %>
 
-          <div class="form-group">
-		    <%= f.label :title %>
-		    <%= f.text_field :title, class: "form-control" %>
-		  </div>
-        <p style="color: white;">in <strong>Public Spaces</strong></p>
+        <div class="form-group">
+  		    <%= f.label :title %>
+  		    <%= f.text_field :title, class: "form-control" %>
+  		  </div>
+        <div class="form-group">
+          <%= f.label :tag_list %>
+          <%= f.text_field :tag_list, class: "form-control" %>
+        </div>
       </div>
 
       <div class="col-sm-4" style="width: 20%; margin-left: 10%; padding: 0px; margin-top: 37px;">
