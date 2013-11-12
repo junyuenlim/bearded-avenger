@@ -1,7 +1,29 @@
 ActiveAdmin.register User do
 
+  index do
+    column :id
+    column "Profile pic" do |event|
+      link_to(image_tag(event.avatar.url, :height => '50'))
+    end
+    column :name
+    column :first_name
+    column :last_name
+    column :gender
+    column :provider
+    column :fb_verified
+    column :location
+    column :fb_link
+    column :uid
+    default_actions
+  end
+
   form do |f|
     f.inputs "User Details" do
+      f.input :first_name
+      f.input :last_name
+      f.input :gender
+      f.input :fb_verified
+      f.input :location
       f.input :email
       f.input :password
       f.input :password_confirmation

@@ -1,9 +1,11 @@
-<div class="container">
-	<!--<h1>Users#show</h1>
-	<p>Find me in app/views/users/show.html.erb</p>
-	<h1>Profile</h1>
-	<%= @user.name %><%= @user.first_name %> <%= @user.last_name %>
-
-	<h1>Projects</h1>
-	<%= render @projects %>-->
+<div class="container" id="pages">
+	<div class="col-xs-5 col-xs-offset-3">
+		<div class="panel panel-default">
+		  <div class="panel-body text-center">
+		  	<%= image_tag @user.avatar.url(:thumb), width: "150", class: "img-rounded" %>
+		    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+		    <% if @user.fb_verified %>FB Verified<% end %>
+		  </div>
+		</div>
+	</div>	
 </div>

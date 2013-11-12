@@ -9,13 +9,22 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :first_name,
                     :middle_name, :last_name, :gender, :locale, :username, :timezone, :bio, :birthday, :hometown, :location,
-                    :fb_link, :currency, :fb_verified
+                    :fb_link, :currency, :fb_verified, :avatar
   # attr_accessible :title, :body
 
   has_many :projects, :dependent => :destroy
-
   has_many :relationships, foreign_key: "follower_id"
   has_many :followed_projects, through: :relationships, source: :project
+  has_attached_file :avatar, styles: { :thumb => ["200x200#", :jpg] },
+                    :storage => :s3,
+                    :bucket => "hungryhippie",
+                    :s3_credentials => S3_CREDENTIALS,
+                    :url  => "/users/:id/avatar/:style/:basename.:extension",
+                    :path => "/public/users/:id/avatar/:style/:basename.:extension",
+                    :default_url => '/assets/graphics/missing_avatar.png'
+  validates_attachment :avatar, 
+                        content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] },
+                        size: { less_than: 2.megabytes }
 
   def following_project?(project)
     relationships.find_by_follower_id(project.id)

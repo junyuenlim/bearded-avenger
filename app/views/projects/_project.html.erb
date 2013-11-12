@@ -6,7 +6,7 @@
 		</div>
 		<div class="author">
 			<div class="user-avatar pull-left">
-				<img src="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-ash2/843908_527145123975229_494407850_o.jpg" height="50">
+				<%= image_tag project.user.avatar.url(:thumb), width: "50", class: "img-rounded" %>
 			</div>
 			<div class="author-name">
 				<h4><%= link_to project.user.name, project.user %></h4>

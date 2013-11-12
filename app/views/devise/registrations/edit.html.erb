@@ -30,6 +30,11 @@
               <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
                 <%= devise_error_messages! %>
 
+                <%= image_tag @user.avatar.url(:thumb), width: "100", class: "img-circle" %>
+                <%= f.label "Profile Picture" %>
+                <%= f.file_field :avatar %>
+                <p class="help-block"><small>Ideal size: 200px x 200px, JPG/PNG/GIF no larger than 2mb</small></p>
+
                 <div class="form-group">
                   <%= f.label :first_name %>
                   <%= f.text_field :first_name, class: "form-control", :autofocus => true %>
