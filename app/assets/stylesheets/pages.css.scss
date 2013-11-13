@@ -129,11 +129,12 @@ ul.nav-li {padding-left: 0px;}
 }
 
 .landing-background {
-	background-image: url('/assets/graphics/landing.jpg');
-	background-size: 100% 100%;
+	background: url('/assets/graphics/landing.jpg') no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
 	background-color: #e6f3d5;
-	background-repeat: no-repeat;
-	min-height: 900px;
 }
 
 #error_explanation h2 {font-size: 25px;}
