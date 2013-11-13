@@ -33,6 +33,9 @@ gem 'aws-sdk'
 gem 'faker', '1.1.2'
 gem "acts-as-taggable-on"
 
+# Heroku
+gem 'rails_12factor'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
