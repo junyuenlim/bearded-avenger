@@ -40,16 +40,16 @@
         <div class="col-sm-12">
           <table class="table table-hover projects-table">
             <tr>
+              <th></th>
               <th>Title</th>
-              <th>Description</th>
               <th></th>
               <th></th>
             </tr>
 
           <% @projects.each do |project| %>
             <tr>
-              <td class="col-xs-5"><%= link_to(project) do %><h4><strong><%= project.title %></strong></h4></a><% end %></td>
-              <td><%= truncate(project.description, :omission => "... (continued)", :length => 200).html_safe %></td>
+              <td><%= link_to(project) do %><%= image_tag project.thumbnail, width: "100" %><% end %></td>
+              <td class="col-xs-9 text-center"><%= link_to(project) do %><h4><strong><%= project.title %></strong></h4></a><% end %></td>
               <td><% if current_user == project.user || current_user.superadmin?  %>
                 <%= link_to 'Edit', edit_project_path(project) %><% end %></td>
               <td><% if current_user == project.user || current_user.superadmin?  %>

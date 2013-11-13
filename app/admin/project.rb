@@ -10,7 +10,7 @@ ActiveAdmin.register Project do
 	form do |f|
     f.inputs "Project Details" do
       f.input :title
-      f.input :description
+      f.input :description, :rows => "10"
       f.input :tag_list
       f.input :published
     end
