@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :title, :thumbnail, :tag_list
+  attr_accessible :description, :title, :thumbnail, :tag_list, :published
 
   acts_as_taggable
   acts_as_taggable_on :categories

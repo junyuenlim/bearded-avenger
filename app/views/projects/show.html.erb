@@ -9,7 +9,7 @@
         <p class="project-category">in <%= @project.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
       </div>
       <div class="col-sm-4" style="width: 20%; margin-left: 0%; padding: 0px; margin-top: 37px;">
-        <% if current_user == @project.user %>
+        <% if current_user == @project.user || current_user.superadmin? %>
          <p style="color:white;">You are Project Owner</p>
          <%= link_to edit_project_path(@project), class: "btn btn-default" do %>
           Edit Project

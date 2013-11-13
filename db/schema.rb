@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131112060836) do
+ActiveRecord::Schema.define(:version => 20131113110613) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20131112060836) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.boolean  "published"
   end
 
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"

@@ -3,6 +3,7 @@ ActiveAdmin.register Project do
         column :title
         column :description
         column :tag_list
+        column :published
         default_actions
 	end
 
@@ -11,6 +12,7 @@ ActiveAdmin.register Project do
       f.input :title
       f.input :description
       f.input :tag_list
+      f.input :published
     end
     f.buttons
   end

@@ -14,13 +14,14 @@
 		<% end %>
 	<% end %>
 
-
+	<% if user_signed_in? %>
 	<div class="container">
 		<% flash.each do |name, msg| %>
 			<%= content_tag(:div, msg, class: "alert alert-info", id: "flash-message") %>
 		<% end %>
 	</div>
-		<%= yield %>
+	<% end %>
+	<%= yield %>
 
 </body>
   <%= javascript_include_tag "application" %>

@@ -1,5 +1,6 @@
 <div>
   <div class="project-box-content">
     <p><%= @project.description.html_safe %></p>
+    <p class="text-success">Updated at <strong><%= time_tag @project.updated_at %></strong></p>
   </div>
 </div>

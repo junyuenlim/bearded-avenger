@@ -29,6 +29,10 @@
       </div>
 
       <div class="col-sm-4" style="width: 20%; margin-left: 10%; padding: 0px; margin-top: 37px;">
+        <div class="form-group">
+          <%= f.label :published, "Publish?" %>
+          <%= f.check_box :published %>
+        </div>
 			<div class="form-group">
 				<%= f.submit class: "btn btn-lg btn-primary" %>
 			</div>
