@@ -11,4 +11,5 @@
  *= require_self
  *= require bootstrap-wysihtml5/b3
  *= require pages
+ *= require 'masonry/transitions'
  */

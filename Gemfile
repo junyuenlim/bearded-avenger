@@ -32,6 +32,8 @@ gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem 'faker', '1.1.2'
 gem "acts-as-taggable-on"
+gem 'masonry-rails', '~> 0.2.0'
+gem 'jquery-turbolinks'
 
 # Heroku
 gem 'rails_12factor'
