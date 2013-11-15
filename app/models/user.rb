@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
                     :fb_link, :currency, :fb_verified, :avatar
   # attr_accessible :title, :body
 
+  has_many :discussions
   has_many :projects, :dependent => :destroy
   has_many :relationships, foreign_key: "follower_id"
   has_many :followed_projects, through: :relationships, source: :project

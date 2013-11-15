@@ -1,0 +1,30 @@
+<div class="discussion-cover">
+</div>
+
+<div class="project-page">
+  <div class="container">
+
+    <div class="row" style="margin-top: 300px; margin-bottom: 30px;">
+      <div class="col-sm-8" style="width: 70%; padding-left: 0px;">
+      </div>
+      <div class="col-sm-4" style="width: 20%; margin-left: 0%; padding: 0px; margin-top: 37px;">
+        <% if current_user == @discussion.user || current_user.superadmin? %>
+         <p style="color:white;">You are discussion facilitator</p>
+         <%= link_to edit_discussion_path(@discussion), class: "btn btn-default" do %>
+          Edit discussion
+         <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-sm-12 project-box" style="min-height: 800px;">
+        <div class="project-box-content">
+          <h1><%= @discussion.title %></h1>
+          <p><%= @discussion.description %></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

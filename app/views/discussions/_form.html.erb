@@ -1,0 +1,32 @@
+<%= form_for(@discussion) do |f| %>
+  <% if @discussion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
+
+      <ul>
+      <% @discussion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, "Question" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group" id="wysihtml5">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control wysihtml5", rows: "10" %>
+  </div>
+
+  <div class="form-group" id="wysihtml5">
+    <%= f.label :published, "Publish?" %>
+    <%= f.check_box :published %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
