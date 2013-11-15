@@ -39,7 +39,7 @@ p {}
 #pages {padding-top: 20px; min-height: 700px;}
 .container {max-width: none !important; width: 960px;}
 .container {padding-left: 0px;}
-.row {padding-left: 15px; padding-right: 15px;}projects
+.row {padding-left: 15px; padding-right: 15px;}
 
 .nav-link {border-left: 1px solid #ccc;}
 .navbar {
@@ -273,14 +273,29 @@ ul.nav-li {padding-left: 0px;}
 }
 
 /*-- DISCUSSIONS --*/
+.discussion-page {margin: 0 0 100px 0;}
 .discussion-cover {
 	background-image: url('/assets/graphics/Blur-1.jpg');
 	background-size: 100%;
-	height: 500px;
+	height: 600px;
 	width: 100%;
 	position: absolute;
 	z-index: -1000;
 }
+.discussion-tabs {font-size: 16px;}
+.discussion-box {
+	background-color: #fff; 
+	box-shadow: 0px 2px 0px rgba(0,0,0,0.2); 
+	padding: 0px; 
+	border: 1px solid #ccc;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.discussion-box-content {padding: 20px 80px; width: 100%;}
+.discussion-box-content h1 {font-size: 3em; font-weight:900;}
 
 .team {
 	background-image: url('/assets/IMG_6891.jpg');

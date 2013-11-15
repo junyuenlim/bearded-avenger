@@ -1,4 +1,5 @@
 <div class="project-card">
+	<%= link_to(discussion) do %><%= image_tag discussion.cover.url(:thumb), width: "100%" %><% end %>
 	<div class="project-info">
 		<div class="project-title">
 			<%= link_to(discussion) do %><h4><strong><%= discussion.title %></strong></h4></a><% end %>
