@@ -1,23 +1,24 @@
 ActiveadminTest::Application.routes.draw do
 
-  get "users/show"
-
-  get 'category/:tag', to: 'projects#index', as: :tag
   resources :projects do
       member do
       get :followers
     end
   end
   resources :relationships, only: [:create, :destroy]
-  resources :discussions
+  resources :discussions do
+    resources :inspirations
+  end
+  resources :inspirations
   
   authenticated :user do
     root :to => "projects#index"
   end
-
   root :to => 'pages#welcome'
 
   get 'about' => "pages#about"
+  get "users/show"
+  get 'category/:tag', to: 'projects#index', as: :tag
 
   ActiveAdmin.routes(self)
   

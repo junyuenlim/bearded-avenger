@@ -2,6 +2,7 @@ class DiscussionsController < ApplicationController
 
   def index
     @discussions = Discussion.where(:published => true)
+    @inspirations = Inspiration.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,6 +37,11 @@ class DiscussionsController < ApplicationController
   # POST /discussions.json
   def create
     @discussion = current_user.discussions.new(params[:discussion])
+
+    @discussion = Discussion.find(params[:discussion_id])
+    @inspiration = @discussion.inspirations.build(params[:inspiration])
+    @inspiration.user_id = current_user.id
+    @inspiration.save
 
     respond_to do |format|
       if @discussion.save
