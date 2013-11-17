@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131116072404) do
+ActiveRecord::Schema.define(:version => 20131117131238) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20131116072404) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "image_remote_url"
   end
 
   add_index "inspirations", ["user_id"], :name => "index_inspirations_on_user_id"

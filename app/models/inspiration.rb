@@ -1,5 +1,5 @@
 class Inspiration < ActiveRecord::Base
-  attr_accessible :description, :title, :user_id, :discussion_id, :image
+  attr_accessible :description, :title, :user_id, :discussion_id, :image, :image_remote_url
 
   validates :user_id, presence: true
   validates :discussion_id, presence: true
@@ -11,4 +11,9 @@ class Inspiration < ActiveRecord::Base
 
   belongs_to :discussion
   belongs_to :user
+
+  def image_remote_url=(url_value)
+    self.image = URI.parse(url_value) unless url_value.blank?
+    super
+  end
 end
