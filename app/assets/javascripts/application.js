@@ -15,9 +15,8 @@
 //= require jquery.turbolinks
 //= require masonry/jquery.masonry
 //= require bootstrap-wysihtml5/b3
-//= require bootstrap-wysihtml5/locales
 //= require bootstrap
-//= require_tree .
+//= require projects
 
 
 (function(d, s, id) {
