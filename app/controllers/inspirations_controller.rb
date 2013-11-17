@@ -37,13 +37,13 @@ class InspirationsController < ApplicationController
   # POST /inspirations.json
   def create
   	@discussion = Discussion.find(params[:discussion_id])
-	@inspiration = @discussion.inspirations.build(params[:inspiration])
-	@inspiration.user_id = current_user.id
-	@inspiration.save
+  	@inspiration = @discussion.inspirations.build(params[:inspiration])
+  	@inspiration.user_id = current_user.id
+  	@inspiration.save
 
     respond_to do |format|
       if @inspiration.save
-        format.html { redirect_to @inspiration, notice: 'Inspiration was successfully created.' }
+        format.html { redirect_to @discussion, notice: 'Inspiration was successfully created.' }
         format.json { render json: @inspiration, status: :created, location: @inspiration }
       else
         format.html { render action: "new" }
