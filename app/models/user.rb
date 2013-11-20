@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :name, :first_name,
+  attr_accessor :password, :password_confirmation, :current_password
+  attr_accessible :email, :password, :password_confirmation, :current_password, :remember_me, :provider, :uid, :name, :first_name,
                     :middle_name, :last_name, :gender, :locale, :username, :timezone, :bio, :birthday, :hometown, :location,
                     :fb_link, :currency, :fb_verified, :avatar
   # attr_accessible :title, :body

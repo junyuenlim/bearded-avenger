@@ -24,7 +24,7 @@ ActiveadminTest::Application.routes.draw do
   
   #devise_for :admin_users, ActiveAdmin::Devise.config
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
   match 'users/:id' => 'users#show', as: :user
 
   # The priority is based upon order of creation:
