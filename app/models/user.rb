@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
                         size: { less_than: 2.megabytes }
 
   def following_project?(project)
-    relationships.find_by_follower_id(project.id)
+    relationships.find_by_followedproject_id(project.id)
   end
 
   def follow_project!(project)
@@ -48,8 +48,8 @@ class User < ActiveRecord::Base
                             timezone:auth.extra.raw_info.timezone,
                             bio:auth.extra.raw_info.bio,
                             birthday:auth.extra.raw_info.birthday,
-                            hometown:auth.extra.raw_info.hometown,
-                            location:auth.extra.raw_info.location,
+                            hometown:auth.info.hometown.split(",")[0],
+                            location:auth.info.location.split(",")[0],
                             fb_verified:auth.extra.raw_info.verified,
                             fb_link:auth.extra.raw_info.link,
                             currency:auth.extra.raw_info.currency,

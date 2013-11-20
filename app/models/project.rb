@@ -1,8 +1,8 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :title, :thumbnail, :tag_list, :published
+  attr_accessible :description, :title, :thumbnail, :tag_list, :published, :city_list
 
   acts_as_taggable
-  acts_as_taggable_on :categories
+  acts_as_taggable_on :categories, :city
 
   validates :user_id, presence: true
   has_attached_file :thumbnail, styles: { medium: "560x400>"},

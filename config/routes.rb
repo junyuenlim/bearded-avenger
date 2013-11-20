@@ -12,13 +12,13 @@ ActiveadminTest::Application.routes.draw do
   resources :inspirations
   
   authenticated :user do
-    root :to => "projects#index"
+    root :to => "pages#index"
   end
   root :to => 'pages#welcome'
 
   get 'about' => "pages#about"
-  get "users/show"
   get 'category/:tag', to: 'projects#index', as: :tag
+  get 'city/:city', to: 'projects#index', as: :tag
 
   ActiveAdmin.routes(self)
   

@@ -2,9 +2,11 @@
 	<div class="project-icon-right">
 	  <span class="glyphicon glyphicon-user glyphicon-project" style="font-size: 18px; top: 6px; left: 9px; color: grey;"></span>
 	</div>
-	<div class="project-box-content">
-	  <p><strong>Followers</strong></p>
-		<%= raw @project.followers.order("created_at DESC").map(&:first_name).join(', ') %>
+	<div class="project-box-content" id="followers">
+	  <p><strong>Followers</strong> (<%= @project.followers.count %>)</p>
+		<% for follower in @project.followers %>
+			<%= link_to image_tag(follower.avatar.url(:thumb)), follower, :rel => "tooltip", :data => { :delay => 20, :title => follower.first_name } %>
+		<% end %>
 	</div>
 
 </div>

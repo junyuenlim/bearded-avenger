@@ -2,21 +2,15 @@
 	<%= link_to(project) do %><%= image_tag project.thumbnail.url(:medium), width: "100%" %><% end %>
 	<div class="project-info">
 		<div class="project-title">
-			<%= link_to(project) do %><h4><strong><%= project.title %></strong></h4></a><% end %>
+			<%= link_to(project) do %><h5><%= project.title %></h5></a><% end %>
 		</div>
-		<!--
-		<div class="author">
-			<div class="user-avatar pull-left">
-				<%= image_tag project.user.avatar.url(:thumb), width: "50", class: "img-rounded" %>
-			</div>
-			<div class="author-name">
-				<h4><%= link_to project.user.name, project.user %></h4>
-				<p><%= project.user.first_name %> <%= project.user.last_name %></p>
-			</div>
-		</div>
-		-->
+		<% if current_page?(projects_path) %>
+		<hr>
+			<p><small>in <%= project.city_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></small></p>
+		<% end %>
 	</div>
-	<!--<div class="panel-footer" style="padding: 3px 15px;">
-		<p style="margin-bottom: 3px;"><small>in <%= project.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></small></p>
-	</div>-->
+	<div class="project-stats" id="tooltip">
+		<span class="glyphicon glyphicon-user" data-placement="bottom" rel="tooltip" title="Followers"></span><span><%= project.followers.count %></span>
+		<span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Views"></span><span><%= project.followers.count %></span>
+	</div>
 </div>

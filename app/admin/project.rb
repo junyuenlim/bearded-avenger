@@ -4,6 +4,7 @@ ActiveAdmin.register Project do
     column :id
     column :title
     column :description
+    column :city_list
     column :tag_list
     column :user
     column :published

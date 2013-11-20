@@ -18,7 +18,6 @@
 //= require bootstrap
 //= require projects
 
-
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -39,3 +38,7 @@ $(document).ready(function(){
 $(document).ready(function () {
   $("div[id^='flash-message']").fadeOut(3000);
 });
+
+
+$("#tooltip span").tooltip()
+$("#followers a").tooltip()

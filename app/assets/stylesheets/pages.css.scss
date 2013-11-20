@@ -45,15 +45,19 @@ p {}
 .navbar {
 	border-bottom: 1px solid #ccc;
 	margin-bottom: 0px;
-	box-shadow: 0px 1px 10px rgba(0,0,0,0.05);
+	box-shadow: 0px 1px 0px rgba(0,0,0,0.05);
+	-moz-box-shadow: 0 1px 0px rgba(0,0,0,0.05);
+	-webkit-box-shadow: 0 1px 0px rgba(0,0,0,0.05);
 }
 .navbar-brand {
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
     padding-top: 0px;
     padding-bottom: 0px;
-    margin-right: 100px;
+    margin-right: 60px;
+    line-height: 50px;
 }
+.navbar-brand img {margin-right: 3px; line-height: 40px; margin-bottom: 4px;}
 .navbar-default .navbar-brand {color:#2c3e50;}
 .nav-li > li {list-style-type: none; text-decoration: none;}
 ul.nav-li {padding-left: 0px;}
@@ -139,20 +143,35 @@ ul.nav-li {padding-left: 0px;}
 
 #error_explanation h2 {font-size: 25px;}
 
-/*-- PROJECT --*/
+.card {
+	border: #ddd 1px solid;
+	-moz-box-shadow: 0 1px 0px #ddd;
+	-webkit-box-shadow: 0 1px 0px #ddd;
+	box-shadow: 0 1px 0px #ddd;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px;
+}
 
-.projects {}
+
+/*-- PROJECT --*/
+.bubble {
+	padding: 3px;
+	background: #eee;
+	border-radius: 3px;
+}
 .project-page {margin: 0 0 100px 0;}
 .project-card {
-	width: 280px;
-	min-height: 250px;
+	width: 200px;
 	margin: 15px;
+	padding: 3px;
 	float: left;
-	background-color: #fff;
+	background-color: #f8f8f8;
 	border: #ddd 1px solid;
-	-moz-box-shadow: 0 1px 1px #ddd;
-	-webkit-box-shadow: 0 1px 1px #ddd;
-	box-shadow: 0 1px 1px #ddd;
+	-moz-box-shadow: 0 1px 0px #ddd;
+	-webkit-box-shadow: 0 1px 0px #ddd;
+	box-shadow: 0 1px 0px #ddd;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-khtml-border-radius: 3px;
@@ -176,18 +195,15 @@ ul.nav-li {padding-left: 0px;}
   .l { font-size: 1.8em; }
 }
 
-.project-info > h4 {}
-.project-info > p {color: grey;}
-
+.project-title h5 {font-weight: 600; line-height: 1.3em;}
+.project-info > p {color: grey; margin-bottom: 0px; }
+.project-info hr {margin: 0px;}
 .project-info {
 	width: 100%;
-	padding: 5px;
+	padding: 5px 10px;
 	background-color: white;
 }
-.project-card .project-title {
-	margin-left: 10px;
-	color: #e74c3c;
-}
+.project-card .project-title {}
 .project-card .project-title a, a:active {text-decoration: none;}
 
 .project-card .user-avatar {
@@ -217,12 +233,8 @@ ul.nav-li {padding-left: 0px;}
 
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {height: 100%; width: 100%;}
 
-.project-stats {
-	width: 100%;
-	background-color: #f8f8f8; 
-	padding: 5px;
-	border-top: 1px solid #ddd;
-}
+.project-stats {color: #bbb; font-size: 12px; padding-top: 6px;}
+.project-stats span {margin-left: 10px;}
 
 .project-cover {
 	background-image: url('/assets/graphics/Blur-1.jpg');
@@ -240,6 +252,7 @@ ul.nav-li {padding-left: 0px;}
 	border: 1px solid #ccc;
 }
 .project-box-content {padding: 20px 20px; width: 100%;}
+#followers img {width: 30px; margin-right:5px;}
 .project-box-content img {width: 100%;}
 
 .project-icon-right {
