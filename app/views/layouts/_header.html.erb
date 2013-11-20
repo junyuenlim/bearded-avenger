@@ -12,11 +12,11 @@
       <ul class="nav navbar-nav">
          <li style="border-left: 1px solid #ccc;"><%= link_to "Projects", projects_path %></li>
          <li style="border-right: 1px solid #ccc; border-left: 1px solid #ccc;"><%= link_to "Discussions", discussions_path %></li>
-         <% if current_user.location.blank? %>
+         <!--<% if current_user.location.blank? %>
           <li><%= link_to root_path, style: "color: red;" do %><span class="glyphicon glyphicon-map-marker"></span> Select City<% end %></li>
          <% else %>
           <li><%= link_to root_path do %><span class="glyphicon glyphicon-map-marker"></span> <%= current_user.location %><% end %></li>
-         <% end %>
+         <% end %>-->
       </ul>
     	<ul class="nav navbar-nav navbar-right" style="width: 31%;">
 	        <% if user_signed_in? %>

@@ -1,34 +1,17 @@
+<div class="row" style="height: 100px; background: grey;">
+	<div class="container">
+		<span class="glyphicon glyphicon-map-marker"></span> <%= current_user.location %><a href="">Change City</a>
+	</div>
+</div>
+
 <div class="container">
-	<% if current_user.location.blank? %>
-		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-		    <%= devise_error_messages! %>
-
-		    <div class="form-group">
-		      <%= f.label :location, "Select City" %>
-		      <%= f.text_field :location, class: "form-control", placeholder: "City", :autofocus => true %>
-		    </div>
-
-		    <div class="form-group">
-		      <%= f.submit "Update", class: "btn btn-primary" %>
-		    </div>
-
-		    <%= link_to "Back", :back %>
-		  <% end %>
-	<% else %>
-		<% if @projects.tagged_with(current_user.location).blank? %>
-		No projects in your city
-			<button>Create a Project</button>
-			<button>Start a Discussion</button>
-		<% else %>
-				<h1><span class="glyphicon glyphicon-map-marker"></span> <%= current_user.location %></h1><a href="">Change City</a>
-				<div class="row">
-					<h2>Projects</h2>
-					<%= render @projects %>
-				</div>
-				<div class="row">
-					<h1>Discussion</h1>
-					<%= render @discussions %>
-				</div>
-		<% end %>
-	<% end %>
+	
+	<div class="row">
+		<h2>Discussions</h2>
+		<%= render @discussions.tagged_with(["Kuala Lumpur"], :any => true) %>
+	</div>
+	<div class="row">
+		<h2>Projects</h2>
+		<%= render @projects.tagged_with(["Kuala Lumpur"], :any => true) %>
+	</div>
 </div>

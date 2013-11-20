@@ -35,6 +35,10 @@ gem "acts-as-taggable-on"
 gem 'masonry-rails', '~> 0.2.0'
 gem 'jquery-turbolinks'
 
+# City Country Select
+gem "carmen-rails", "~> 1.0.0"
+gem "cities", "~> 0.2.0"
+
 # Heroku
 gem 'rails_12factor'
 

@@ -64,6 +64,13 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.0.4)
+    carmen (1.0.0)
+      unicode_utils (~> 1.4.0)
+    carmen-rails (1.0.0)
+      carmen (~> 1.0.0.beta2)
+      rails
+    cities (0.2.0)
+      multi_json (~> 1.8.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -207,6 +214,7 @@ GEM
     uglifier (2.3.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicode_utils (1.4.0)
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
@@ -220,6 +228,8 @@ DEPENDENCIES
   aws-sdk
   bootstrap-sass (~> 3.0.2.1)
   bootstrap-wysihtml5-rails!
+  carmen-rails (~> 1.0.0)
+  cities (~> 0.2.0)
   coffee-rails (~> 3.2.1)
   devise
   faker (= 1.1.2)
