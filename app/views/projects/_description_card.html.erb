@@ -1,6 +1,8 @@
-<div>
-  <div class="project-box-content">
-    <p><%= @project.description.html_safe %></p>
-    <p class="text-success">Updated at <strong><%= time_tag @project.updated_at %></strong></p>
-  </div>
+<div class="bubble col-sm-8">
+	<div class="card" style="background: white; min-height: 800px;">
+	  <div class="project-box-content">
+	    <p><%= @project.description.html_safe %></p>
+	    <p class="text-muted"><small><%= time_tag @project.updated_at %></small></p>
+	  </div>
+	</div>
 </div>

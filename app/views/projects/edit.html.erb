@@ -22,17 +22,9 @@
   		    <%= f.label :title %>
   		    <%= f.text_field :title, class: "form-control" %>
   		  </div>
-        <div class="form-group">
-          <%= f.label :tag_list %>
-          <%= f.text_field :tag_list, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :city_list %>
-          <%= f.text_field :city_list, class: "form-control" %>
-        </div>
       </div>
 
-      <div class="col-sm-4" style="width: 20%; margin-left: 10%; padding: 0px; margin-top: 37px;">
+      <div class="col-sm-2" style="margin-left: 60px; padding: 0px;">
         <div class="form-group">
           <%= f.label :published, "Publish?" %>
           <%= f.check_box :published %>
@@ -59,14 +51,15 @@
 
       <%= render 'projects/action_card' %>
       <%= render 'projects/stakeholder_card' %>
-      <div class="col-sm-3 project-box" style="margin-left: 5%; width: 30%; margin-top: 20px;">
-        <div class="project-box-content">
+
+      <div class="col-sm-4">
+        <div class="panel panel-default">
           <%= image_tag @project.thumbnail.url(:medium), width: "100%" %>
-          <div class="form-group">
+          <div class="panel-body">
             <%= f.label "Thumbnail image" %>
             <%= f.file_field :thumbnail %>
-            <p class="help-block"><small>Ideal size: 560px x 400px, JPG/PNG/GIF no larger than 5mb</small></p>
           </div>
+          <div class="panel-footer"><small>Ideal size: 560px x 400px, JPG/PNG/GIF no larger than 5mb</small></div>
         </div>
       </div>
 

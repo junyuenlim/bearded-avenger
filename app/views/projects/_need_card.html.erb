@@ -1,0 +1,16 @@
+<div class="col-sm-4">
+	<div class="panel panel-default">
+		<div class="panel-heading"></div>
+		<ul class="list-group">
+
+	    <li class="list-group-item">
+		    <p><strong>Followers</strong> (<%= @project.followers.count %>/10)</p>
+		    <div class="progress">
+		      <div id="followersprogress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= number_with_precision(((@project.followers.count.to_f / 10) * 100), :precision => 0) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= number_to_percentage((@project.followers.count.to_f / 10 * 100), :precision => 2) %>;">
+		      </div>
+		    </div>
+			</li>
+	  
+	  </ul>
+	</div>
+</div>

@@ -10,9 +10,9 @@ $navbar-default-link-active-bg: #ecf0f1;
 $brand-primary: #3498db;
 $jumbotron-bg: white;
 
-$border-radius-base: 1px;
-$border-radius-large: 1px;
-$border-radius-small: 1px;
+$border-radius-base: 3px;
+$border-radius-large: 2px;
+$border-radius-small: 3px;
 
 @import 'bootstrap';
 
@@ -144,6 +144,7 @@ ul.nav-li {padding-left: 0px;}
 #error_explanation h2 {font-size: 25px;}
 
 .card {
+	padding: 0px;
 	border: #ddd 1px solid;
 	-moz-box-shadow: 0 1px 0px #ddd;
 	-webkit-box-shadow: 0 1px 0px #ddd;
@@ -154,11 +155,16 @@ ul.nav-li {padding-left: 0px;}
 	border-radius: 3px;
 }
 
+.panel {
+	-webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
+}
+
 
 /*-- PROJECT --*/
 .bubble {
 	padding: 3px;
-	background: #eee;
+	background: rgba(0, 0, 0, 0.05);
 	border-radius: 3px;
 }
 .project-page {margin: 0 0 100px 0;}

@@ -48,8 +48,8 @@
 
           <% @projects.each do |project| %>
             <tr>
-              <td><%= link_to(project) do %><%= image_tag project.thumbnail, width: "100" %><% end %></td>
-              <td class="col-xs-9 text-center"><%= link_to(project) do %><h4><strong><%= project.title %></strong></h4></a><% end %></td>
+              <td></td>
+              <td class="col-xs-9"><%= link_to(project) do %><strong><%= project.title %></strong></a><% end %></td>
               <td><% if current_user == project.user || current_user.superadmin?  %>
                 <%= link_to 'Edit', edit_project_path(project) %><% end %></td>
               <td><% if current_user == project.user || current_user.superadmin?  %>
