@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  is_impressionable
+
   # Setup accessible (or protected) attributes for your model
   attr_accessor :password, :password_confirmation, :current_password
   attr_accessible :email, :password, :password_confirmation, :current_password, :remember_me, :provider, :uid, :name, :first_name,

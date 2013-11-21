@@ -1,4 +1,6 @@
 class Discussion < ActiveRecord::Base
+  is_impressionable
+  
   attr_accessible :description, :published, :title, :cover, :city_list
 
   acts_as_taggable

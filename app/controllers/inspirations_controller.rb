@@ -11,6 +11,7 @@ class InspirationsController < ApplicationController
 
   def show
     @inspiration = Inspiration.find(params[:id])
+    impressionist(@inspiration)
 
     respond_to do |format|
       format.html # show.html.erb

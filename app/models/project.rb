@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  is_impressionable
+  
   attr_accessible :description, :title, :thumbnail, :tag_list, :published, :city_list
 
   acts_as_taggable

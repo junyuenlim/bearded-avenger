@@ -8,6 +8,7 @@ ActiveAdmin.register Project do
     column :tag_list
     column :user
     column :published
+    column "Views", :impressionist_count
     default_actions
   end
 
@@ -20,6 +21,7 @@ ActiveAdmin.register Project do
         f.input :tag_list
         f.input :user
         f.input :published
+        f.input :impressionist_count
     end
     f.buttons
   end

@@ -12,6 +12,7 @@ class DiscussionsController < ApplicationController
 
   def show
     @discussion = Discussion.find(params[:id])
+    impressionist(@discussion)
 
     respond_to do |format|
       format.html # show.html.erb

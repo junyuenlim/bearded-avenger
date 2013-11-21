@@ -1,4 +1,6 @@
 class Inspiration < ActiveRecord::Base
+  is_impressionable
+  
   attr_accessible :description, :title, :user_id, :discussion_id, :image, :image_remote_url
 
   validates :user_id, presence: true
