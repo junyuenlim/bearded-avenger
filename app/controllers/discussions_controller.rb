@@ -2,7 +2,6 @@ class DiscussionsController < ApplicationController
 
   def index
     @discussions = Discussion.where(:published => true)
-    @inspirations = Inspiration.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +11,10 @@ class DiscussionsController < ApplicationController
 
   def show
     @discussion = Discussion.find(params[:id])
+    @inspirations = @discussion.inspirations.all
     impressionist(@discussion)
+
+    @inspiration = @discussion.inspirations.build
 
     respond_to do |format|
       format.html # show.html.erb

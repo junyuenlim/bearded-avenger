@@ -5,8 +5,7 @@ class Inspiration < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :discussion_id, presence: true
-  has_attached_file :image, styles: { thumbnail: "560x400>"},
-  					default_url: '/assets/graphics/missing_thumbnail.jpg'
+  has_attached_file :image, styles: { thumbnail: "560x400>"}
   validates_attachment :image, 
                         content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] },
                         size: { less_than: 5.megabytes }

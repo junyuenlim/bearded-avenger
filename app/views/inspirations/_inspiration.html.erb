@@ -1,3 +1,14 @@
-<%= inspiration.title %>
-<%= inspiration.description %>
-<%= inspiration.discussion.title %>
+<div class="card col-sm-3" style="margin: 15px;">
+	<% if inspiration.image? %>
+		<%= link_to(inspiration) do %>
+		<%= image_tag inspiration.image.url(:thumbnail), width: "100%" %><% end %>
+	<% end %>
+	<h4><%= inspiration.title %></h4>
+	<p><%= inspiration.description %></p>
+	by <%= inspiration.user.first_name %>
+	<% if inspiration.user == current_user %>
+	<%= link_to 'Edit', edit_inspiration_path(inspiration) %><%= link_to 'Delete', inspiration, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+	<div class="discussion-stats" id="tooltip">
+		<span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Ideas"></span><span><%= inspiration.impressionist_count %></span>
+	</div>
+</div>

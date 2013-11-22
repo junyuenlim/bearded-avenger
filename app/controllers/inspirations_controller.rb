@@ -1,14 +1,5 @@
 class InspirationsController < ApplicationController
 
-  def index
-    @inspirations = Inspiration.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @inspirations }
-    end
-  end
-
   def show
     @inspiration = Inspiration.find(params[:id])
     impressionist(@inspiration)

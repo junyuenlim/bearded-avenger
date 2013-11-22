@@ -1,17 +1,60 @@
-<div class="row" style="height: 100px; background: grey;">
+<div class="row text-center">
+	<div class="container " style="background: #c7c1b9;">
+		<h1><%= current_user.location %></h1>
+		<a href="">Change City</a>
+	</div>
+</div>
+
+<div class="row">
 	<div class="container">
-		<span class="glyphicon glyphicon-map-marker"></span> <%= current_user.location %><a href="">Change City</a>
+		<h4>DISCUSSIONS</h4>
+		<p>Discuss urban issues</p>
+		<div class="row">
+			<%= render @discussions.tagged_with(["Kuala Lumpur"], :any => true) %>
+			<div class="col-sm-6">
+				<div class="panel-group" id="accordion">
+					<% @discussions.each do |discussion| %>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+							  <h4 class="panel-title">
+							    <a data-toggle="collapse" data-parent="#accordion" href="#discussion<%= discussion.id %>">
+							    	<h4><strong><%= discussion.title %></strong></h4>
+							    </a>
+							  </h4>
+							</div>
+							<div id="discussion<%= discussion.id %>" class="panel-collapse collapse">
+							  <div class="panel-body">
+							    <% if user_signed_in? %>
+									<%= image_tag current_user.avatar.url(:thumb), width: "33", class: "img-rounded", :style => "float: left;" %>
+									<% end %>
+									<div class="input-group">
+								      <input type="text" class="form-control" placeholder="Write a comment..." style="margin-left: 5px;">
+								      <span class="input-group-btn">
+								        <button class="btn btn-default" type="button">
+								    		<span class="glyphicon glyphicon-comment" style="color: #bbb;"></span></button>
+								      </span>
+								    </div>
+							  </div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="background: #f8f8f8;">
+	<div class="container">
+	</div>
+</div>
+
+<div class="row" style="background: #c7c1b9;">
+	<div class="container">
+		<h4>PROJECTS</h4>
+		<%= render @projects.tagged_with(["Kuala Lumpur"], :any => true) %>
 	</div>
 </div>
 
 <div class="container">
-	
-	<div class="row">
-		<h2>Discussions</h2>
-		<%= render @discussions.tagged_with(["Kuala Lumpur"], :any => true) %>
-	</div>
-	<div class="row">
-		<h2>Projects</h2>
-		<%= render @projects.tagged_with(["Kuala Lumpur"], :any => true) %>
-	</div>
 </div>
