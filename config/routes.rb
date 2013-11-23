@@ -8,6 +8,7 @@ ActiveadminTest::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :discussions do
     resources :inspirations
+    resources :comments
   end
   resources :inspirations
   

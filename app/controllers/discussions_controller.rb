@@ -12,9 +12,14 @@ class DiscussionsController < ApplicationController
   def show
     @discussion = Discussion.find(params[:id])
     @inspirations = @discussion.inspirations.all
+
+    @discussion = Discussion.find(params[:id])
+    @comments = @discussion.comments.order("updated_at desc")
+
     impressionist(@discussion)
 
     @inspiration = @discussion.inspirations.build
+    @comment = @discussion.comments.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,11 +45,6 @@ class DiscussionsController < ApplicationController
   # POST /discussions.json
   def create
     @discussion = current_user.discussions.new(params[:discussion])
-
-    @discussion = Discussion.find(params[:discussion_id])
-    @inspiration = @discussion.inspirations.build(params[:inspiration])
-    @inspiration.user_id = current_user.id
-    @inspiration.save
 
     respond_to do |format|
       if @discussion.save

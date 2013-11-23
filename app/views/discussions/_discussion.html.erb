@@ -1,31 +1,31 @@
 <div class="col-sm-6">
-<div class="panel panel-default">
-	<%= link_to(discussion) do %><%= image_tag discussion.cover.url(:original), width: "100%" %><% end %>
-	<div class="panel-body">
-		<div class="project-title">
-			<%= link_to(discussion) do %><h3><strong><%= discussion.title %></strong></h3></a><% end %>
+	<div class="panel panel-default">
+		<%= link_to(discussion) do %><%= image_tag discussion.cover.url(:original), width: "100%" %><% end %>
+		<div class="panel-body">
+			<div class="project-title">
+				<%= link_to(discussion) do %><h3><strong><%= discussion.title %></strong></h3></a><% end %>
+			</div>
+
+			<div class="discussion-stats" id="tooltip">
+				<span class="glyphicon glyphicon-pushpin" data-placement="bottom" rel="tooltip" title="Inspirations"></span><span><%= discussion.inspirations.count %></span>
+				<span class="glyphicon glyphicon-star" data-placement="bottom" rel="tooltip" title="Ideas"></span><span><%= discussion.impressionist_count %></span>
+				<span class="glyphicon glyphicon-comment" data-placement="bottom" rel="tooltip" title="Comments"></span><span><%= discussion.comments.count %></span>
+				<span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Views"></span><span><%= discussion.impressionist_count %></span>
+			</div>
+
 		</div>
 
-		<div class="discussion-stats" id="tooltip">
-			<span class="glyphicon glyphicon-pushpin" data-placement="bottom" rel="tooltip" title="Inspirations"></span><span><%= discussion.inspirations.count %></span>
-			<span class="glyphicon glyphicon-star" data-placement="bottom" rel="tooltip" title="Ideas"></span><span><%= discussion.impressionist_count %></span>
-			<span class="glyphicon glyphicon-comment" data-placement="bottom" rel="tooltip" title="Comments"></span><span><%= discussion.impressionist_count %></span>
-			<span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Views"></span><span><%= discussion.impressionist_count %></span>
+		<div class="panel-footer">
+			<% if user_signed_in? %>
+			<%= image_tag current_user.avatar.url(:thumb), width: "33", class: "img-rounded", :style => "float: left;" %>
+			<% end %>
+			<div class="input-group">
+		      <input type="text" class="form-control" placeholder="Write a comment..." style="margin-left: 5px;">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">
+		    		<span class="glyphicon glyphicon-comment" style="color: #bbb;"></span></button>
+		      </span>
+		    </div>
 		</div>
-
 	</div>
-
-	<div class="panel-footer">
-		<% if user_signed_in? %>
-		<%= image_tag current_user.avatar.url(:thumb), width: "33", class: "img-rounded", :style => "float: left;" %>
-		<% end %>
-		<div class="input-group">
-	      <input type="text" class="form-control" placeholder="Write a comment..." style="margin-left: 5px;">
-	      <span class="input-group-btn">
-	        <button class="btn btn-default" type="button">
-	    		<span class="glyphicon glyphicon-comment" style="color: #bbb;"></span></button>
-	      </span>
-	    </div>
-	</div>
-</div>
 </div>

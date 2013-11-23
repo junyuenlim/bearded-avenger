@@ -35,6 +35,7 @@ gem "acts-as-taggable-on"
 gem 'masonry-rails', '~> 0.2.0'
 gem 'jquery-turbolinks'
 gem "impressionist", "~> 1.4.12"
+gem 'acts_as_commentable', '3.0.1'
 
 # City Country Select
 gem "carmen-rails", "~> 1.0.0"

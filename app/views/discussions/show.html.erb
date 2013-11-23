@@ -1,67 +1,84 @@
-<div class="discussion-cover" style="background-image: url('<%= @discussion.cover.url(:medium) %>');">
-</div>
+<body style="background: #f8f8f8;">
 
 <div class="discussion-page">
   <div class="container">
-
-    <div class="panel-group" id="accordion">
-      <div id="collapseOne" class="panel-collapse collapse in">
-        <div class="panel-body" style="height: 450px;">
-        </div>
+      <div class="col-sm-4">
+        <%= image_tag(@discussion.cover.url(:thumb), width: "100%") %>
       </div>
-    </div>
-
-    <div class="col-sm-12 discussion-box" style="margin-top: 50px; min-height: 800px;">
-      <h5 class="text-center">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          <span class="glyphicon glyphicon-chevron-up"></span>
-        </a>
-      </h5>
-      <div class="discussion-box-content">
-        <h1><%= @discussion.title %></h1>
-        <p><%= @discussion.description %></p>
-
-        <ul class="nav nav-tabs discussion-tabs">
-          <li class="active"><a href="#inspiration" data-toggle="tab"><span class="glyphicon glyphicon-pushpin"></span> Inspiration</a></li>
-          <li><a href="#ideas" data-toggle="tab"><span class="glyphicon glyphicon-star"></span> Ideas</a></li>
-          <li><a href="#discuss" data-toggle="tab"><span class="glyphicon glyphicon-comment"></span> Discuss</a></li>
-        </ul>
-
-        <div class="tab-content">
-          <div class="tab-pane fade in active" id="inspiration">              
-                <div class="text-center" style="padding: 20px;">
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-            <span class="glyphicon glyphicon-pushpin"></span> Share Your Observation</button></div>
-
-                <%= render @inspirations %>
-          
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h3 class="modal-title" id="myModalLabel">Add Inspiration</h3>
-                  to <%= link_to @discussion.title, @discussion %>
-                </div>
-                <%= render 'inspirations/form' %>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
-          </div>
-          <div class="tab-pane fade" id="ideas">Ideas</div>
-          <div class="tab-pane fade" id="discuss">Discussion</div>
-        </div>
-
-        <% if current_user == @discussion.user || current_user.superadmin? %>
-         <%= link_to edit_discussion_path(@discussion), class: "btn btn-default" do %>
-          Edit discussion
-         <% end %>
-        <% end %>
-
+      <div class="col-sm-8">
+          <% if current_user == @discussion.user || current_user.superadmin? %>
+            <%= link_to edit_discussion_path(@discussion) do %>
+              <div class="project-icon-right">
+                <span class="glyphicon glyphicon-edit glyphicon-project"></span>
+              </div>
+            <% end %>
+          <% end %>
+          <h1 class="discussion-title"><%= @discussion.title %></h1>
+          <p><%= @discussion.description %></p>
       </div>
-    </div>
-
   </div>
+
+  <div class="container bubble">
+    <div class="panel panel-default">
+      <div class="panel-heading">Brainstormmmmmm!</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-7">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><h4>IDEAS & INSPIRATIONS</h4></th>
+                </tr>
+              </thead>
+            </table>
+            <div class="text-center" style="padding: 20px;">
+              <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          <span class="glyphicon glyphicon-pushpin"></span> Share Ideas & Inspirations</button></div>
+            <%= render @inspirations %>
+          </div>
+          
+          <div class="col-sm-5">
+
+            <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th><h4>COMMENTS</h4></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= form_for([@discussion, @comment]) do |f|%>
+                <tr>
+                  <td><%= link_to image_tag(current_user.avatar.url(:thumb), width: "30"), current_user, :rel => "tooltip", :data => { :delay => 20, :title => current_user.first_name, :placement => "left" } %></td>
+                  <td><%= f.text_area :comment, class: "form-control", rows: "2", :placeholder => "Write a comment..." %></p>
+                  <td style="padding: 8px 0px;">
+                    <button name="commit" type="submit" class="btn btn-sm btn-info">
+                      <span class="glyphicon glyphicon-comment"></span>
+                    </button>
+                  </td>
+                <tr>
+              <% end %>
+              <%= render @comments.reverse %>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3 class="modal-title" id="myModalLabel">Add Inspiration</h3>
+          to <%= link_to @discussion.title, @discussion %>
+        </div>
+        <%= render 'inspirations/form' %>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div>

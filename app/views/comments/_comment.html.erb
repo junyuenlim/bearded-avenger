@@ -1,0 +1,5 @@
+<tr id="avatar">
+  <td><%= link_to image_tag(comment.user.avatar.url(:thumb), width: "30"), comment.user, :rel => "tooltip", :data => { :delay => 20, :title => comment.user.first_name, :placement => "left" } %></td>
+  <td><%= comment.comment %></td>
+  <td></td>
+</tr>

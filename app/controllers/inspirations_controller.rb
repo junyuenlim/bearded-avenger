@@ -67,7 +67,7 @@ class InspirationsController < ApplicationController
     @inspiration.destroy
 
     respond_to do |format|
-      format.html { redirect_to inspirations_url }
+      format.html { redirect_to @inspiration.discussion }
       format.json { head :no_content }
     end
   end

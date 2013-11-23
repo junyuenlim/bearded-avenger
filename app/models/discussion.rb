@@ -1,5 +1,7 @@
 class Discussion < ActiveRecord::Base
   is_impressionable
+
+  acts_as_commentable
   
   attr_accessible :description, :published, :title, :cover, :city_list
 

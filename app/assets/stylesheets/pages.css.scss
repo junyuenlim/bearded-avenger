@@ -25,20 +25,20 @@ p {}
 
 .btn {
 	border: none;
-	border-bottom: 2px solid rgba(0,0,0,0.1);
+	/*border-bottom: 2px solid rgba(0,0,0,0.1);
 	box-shadow: 0px 2px 0px rgba(0,0,0,0.05);
 }
+.btn:active {
+	margin-top:1px;
+	border-bottom-width:1px;*/
+}
+
 
 #wysihtml5 .btn {border: 1px solid #ccc !important; background: #f8f8f8;}
 
-.btn:active {
-	margin-top:1px;
-	border-bottom-width:1px;
-}
-
 #pages {padding-top: 20px; min-height: 700px;}
 .container {max-width: none !important; width: 960px;}
-.container {padding-left: 0px;}
+.container {padding-left: 0px; padding-right: 0px;}
 .row {padding-left: 15px; padding-right: 15px;}
 
 .nav-link {border-left: 1px solid #ccc;}
@@ -296,11 +296,11 @@ ul.nav-li {padding-left: 0px;}
 
 /*-- DISCUSSIONS --*/
 
+.discussion-title {font-weight:700;}
 .discussion-titles {background: #fff; padding: 10px 5px; margin: 5px 0px;}
 .discussion-titles h3 {margin-top: 5px; margin-bottom: 5px;}
 
-
-.discussion-page {margin: 0 0 100px 0;}
+.discussion-page {margin: 100px 0px;}
 .discussion-cover {
 	background-image: url('/assets/graphics/Blur-1.jpg');
 	background-size: 100%;
@@ -323,6 +323,8 @@ ul.nav-li {padding-left: 0px;}
 
 .discussion-box-content {padding: 20px 80px; width: 100%;}
 .discussion-box-content h1 {font-size: 3em; font-weight:900;}
+#avatar td {padding: 5px; font-size: 13px; line-height: 1.28;}
+
 
 .team {
 	background-image: url('/assets/IMG_6891.jpg');
