@@ -43,3 +43,4 @@ $(document).ready(function () {
 $("#tooltip span").tooltip()
 $("#followers a").tooltip()
 $("#comment a").tooltip()
+$("#project .panel-heading a").tooltip()

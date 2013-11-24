@@ -1,0 +1,7 @@
+<div class="text-center" id="check_box">
+	<% if current_user.voted_up_on?(@project) %>
+		<%= render "projects/checkbox" %>
+	<% else %>
+		<%= render "projects/checkbox_false" %>
+	<% end %>
+</div>

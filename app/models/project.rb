@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   is_impressionable
-  
+  acts_as_votable
+
   attr_accessible :description, :title, :thumbnail, :tag_list, :published, :city_list
 
   acts_as_taggable
@@ -14,6 +15,6 @@ class Project < ActiveRecord::Base
                         size: { less_than: 5.megabytes }
 
   belongs_to :user
-  has_many :relationships, foreign_key: "followedproject_id"
+  # has_many :relationships, foreign_key: "followedproject_id"
   has_many :followers, through: :relationships, source: :user
 end

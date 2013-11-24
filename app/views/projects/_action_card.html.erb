@@ -1,20 +1,39 @@
 <div class="col-sm-4">
   <div class="panel panel-default">
-    <div class="panel-heading">ACTION</div>
+    <div class="panel-heading" id="project">
+      ACTION
+      <span class="pull-right">
+        <%= link_to "#", :rel => "tooltip", :data => { :delay => 20, :title => "Action Card: Here is a list of action steps you could take to help make the project happen.", :placement => "top" } do %>?<% end %>
+      </span>
+    </div>
 
-    <!--<div class="panel-body">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>
+            <% if user_signed_in? %>
+              <% if current_user.voted_up_on?(@project) %>
+                <%= render "projects/unfollow" %>
+              <% else %>
+                <%= render "projects/follow" %>
+              <% end %>
+            <% else %>
+              <%= link_to follow_project_path(@project, method: :get) do %>
+                <button class="btn btn-success">Follow Project</button>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <% if user_signed_in? %>
+              <% if current_user.voted_up_on?(@project) %>
+                <%= render "projects/checkbox" %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <h3 class="stat" id="followers"><%= @project.followers.count %> / 10  </h3>
-      <p><strong>Followers</strong></p>
-
-      <div class="progress">
-        <div id="followersprogress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= number_with_precision(((@project.followers.count.to_f / 10) * 100), :precision => 0) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= number_to_percentage((@project.followers.count.to_f / 10 * 100), :precision => 2) %>;">
-        </div>
-      </div>
-
-    </div>-->
-    <ul class="list-group">
-      <li class="list-group-item"><%= render 'follow_form' if signed_in? %></li>
-    </ul>
   </div>
 </div>

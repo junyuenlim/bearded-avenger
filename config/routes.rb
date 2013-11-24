@@ -1,8 +1,9 @@
 ActiveadminTest::Application.routes.draw do
 
   resources :projects do
-      member do
-      get :followers
+    member do
+      get "follow", to: "projects#follow"
+      get "unfollow", to: "projects#unfollow"
     end
   end
   resources :relationships, only: [:create, :destroy]

@@ -2,9 +2,9 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">STAKEHOLDERS</div>
 		<div class="project-box-content" id="followers">
-		  <p><strong>Followers</strong> (<%= @project.followers.count %>)</p>
-			<% for follower in @project.followers %>
-				<%= link_to image_tag(follower.avatar.url(:thumb)), follower, :rel => "tooltip", :data => { :delay => 20, :title => follower.first_name } %>
+		  <p><strong>Followers</strong> (<%= @project.likes.size%>)</p>
+			<% for voter in @project.votes.up.by_type(User).voters %>
+				<%= link_to image_tag(voter.avatar.url(:thumb)), voter, :rel => "tooltip", :data => { :delay => 20, :title => voter.first_name } %>
 			<% end %>
 		</div>
 	</div>

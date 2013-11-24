@@ -100,4 +100,16 @@ class ProjectsController < ApplicationController
   def project_params
      params.require(:project).permit(:description, :thumbnail)
   end
+
+  def follow
+    @project = Project.find(params[:id])
+    @project.liked_by current_user
+    redirect_to :back, notice: "Followed project!"
+  end
+
+  def unfollow
+    @project = Project.find(params[:id])
+    @project.unliked_by current_user
+    redirect_to :back, notice: "Unfollowed project!"
+  end
 end
