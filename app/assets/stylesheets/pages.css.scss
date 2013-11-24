@@ -40,7 +40,7 @@ p {}
 #pages {padding-top: 20px; min-height: 700px;}
 .container {max-width: none !important; width: 960px;}
 .container {padding-left: 0px; padding-right: 0px;}
-.row {padding-left: 15px; padding-right: 15px;}
+.row {}
 
 .nav-link {border-left: 1px solid #ccc;}
 .navbar {
@@ -189,7 +189,7 @@ ul.nav-li {padding-left: 0px;}
 }
 .project-card .author {height: 50px;}
 .project-card .author-name > p {font-size: 11px;}
-.project-image div:hover {opacity:0.8;}
+.card-image div:hover {opacity:0.8;}
 .project-page .stat {font-size: 3em; font-weight: 700; margin: 0px;}
 
 .project-card > img {
@@ -299,6 +299,21 @@ ul.nav-li {padding-left: 0px;}
 }
 
 /*-- DISCUSSIONS --*/
+
+.cover-img {
+	background: grey; 
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-position: center;
+	z-index: -100;
+}
+
+.discussions-table a, a:hover {color: #2c3e50; text-decoration: none;}
+.discussions-table h2 {font-weight: 700;}
+.discussions-table td {padding-bottom: 50px !important;}
+
 
 .discussion-title {font-weight:700;}
 .discussion-titles {background: #fff; padding: 10px 5px; margin: 5px 0px;}

@@ -1,13 +1,17 @@
 <div style="margin-bottom: 100px;" id="projects">
 
-  <div class="row" style="background: #f8f8f8; height: 200px;">
+  <div class="row" style="background: #f8f8f8; height: 300px;">
     <div class="container">
       <div class="row" style="margin-top: 50px;">
-        <div class="col-xs-4">
+        <div class="col-xs-5">
           <h2>Featured Projects</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque elementum dolor, nec convallis turpis volutpat ac. Praesent lorem eros, dignissim luctus lacus in.</p>
+          <%= link_to new_project_path, class: "btn btn-success" do %>
+            <span class="glyphicon glyphicon-folder-open"></span><span style="margin-left: 10px">Start Project</span>
+          <% end %>
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-xs-3">
         </div>
         
         <div class="col-xs-4">
@@ -36,12 +40,6 @@
             </ul>
           </div>
         </div>
-
-        <div class="panel-body text-center">
-          <%= link_to new_project_path, class: "btn btn-success" do %>
-            <span class="glyphicon glyphicon-folder-open"></span><span style="margin-left: 10px">Start Project</span>
-          <% end %>
-        </div>
       </div>
 
       <div class="col-sm-9">
@@ -66,33 +64,33 @@
             </div>
           </div>
 
-        <div class="tab-pane fade" id="list">          
-          <table class="table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Title</th>
-                <th></th>
-              </tr>
-            </thead>
+          <div class="tab-pane fade" id="list">          
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Title</th>
+                  <th></th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <% @projects.each do |project| %>
-              <tr>
-                <td></td>
-                <td><%= link_to project.title, project %></td>
-                <td>
-                  <% if user_signed_in? %>
-                    <% if current_user == project.user %>
-                      <%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <tbody>
+                <% @projects.each do |project| %>
+                <tr>
+                  <td></td>
+                  <td><%= link_to project.title, project %></td>
+                  <td>
+                    <% if user_signed_in? %>
+                      <% if current_user == project.user %>
+                        <%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
       </div>
 
     </div>

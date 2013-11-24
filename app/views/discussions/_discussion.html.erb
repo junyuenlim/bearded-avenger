@@ -1,9 +1,13 @@
 <div class="col-sm-6">
 	<div class="panel panel-default">
-		<%= link_to(discussion) do %><%= image_tag discussion.cover.url(:original), width: "100%" %><% end %>
+		<div class="card-image">
+			<%= link_to(discussion) do %>
+				<div style="background: url('<%= discussion.cover.url(:thumb) %>') no-repeat center; height: 200px; background-size: 100%;"></div>
+			<% end %>
+		</div>
 		<div class="panel-body">
 			<div class="project-title">
-				<%= link_to(discussion) do %><h3><strong><%= discussion.title %></strong></h3></a><% end %>
+				<%= link_to(discussion) do %><h4><strong><%= discussion.title %></strong></h4></a><% end %>
 			</div>
 
 			<div class="discussion-stats" id="tooltip">
@@ -15,7 +19,7 @@
 
 		</div>
 
-		<div class="panel-footer">
+		<!--<div class="panel-footer">
 			<% if user_signed_in? %>
 			<%= image_tag current_user.avatar.url(:thumb), width: "33", class: "img-rounded", :style => "float: left;" %>
 			<% end %>
@@ -26,6 +30,6 @@
 		    		<span class="glyphicon glyphicon-comment" style="color: #bbb;"></span></button>
 		      </span>
 		    </div>
-		</div>
+		</div>-->
 	</div>
 </div>

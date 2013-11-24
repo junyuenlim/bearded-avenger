@@ -1,79 +1,82 @@
-<div style="margin: 50px 0px;" id="discussions">
+<div class="col-xs-3 cover-img"></div>
 
-  <div class="container">
-    <div class="col-xs-4">
-      <h2>Discussions <br><small>in Kuala Lumpur, Malaysia</small></h2>
-    </div>
+<div style="margin-bottom: 100px;" id="discussions">
 
-    <div class="col-xs-4">
-      <div class="btn-toolbar" role="toolbar" style="margin-top: 48px; padding-left: 100px;">
-        <div class="btn-group">
-          <a href="#thumb" data-toggle="tab" class="btn btn-default">
-            <span class="glyphicon glyphicon-th"></span></a>
-          <a href="#list" data-toggle="tab" class="btn btn-default">
-            <span class="glyphicon glyphicon-th-list"></span></a>
+  <div class="row" style="background: #f8f8f8; height: 300px;">
+    <div class="container">
+      <div class="row" style="margin-top: 50px;">
+        <div class="col-xs-5">
+          <h2>Discussions</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque elementum dolor, nec convallis turpis volutpat ac. Praesent lorem eros, dignissim luctus lacus in.</p>
+          <%= link_to new_discussion_path, class: "btn btn-success" do %>
+            <span class="glyphicon glyphicon-book"></span><span style="margin-left: 10px">Start Discussion</span>
+          <% end %>
+        </div>
+
+        <div class="col-xs-3">
+        </div>
+        
+        <div class="col-xs-4">
+          <form class="navbar-form navbar-left pull-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
         </div>
       </div>
-    </div>
-    
-    <div class="col-xs-4">
-      <form class="navbar-form navbar-left pull-right" role="search" style="margin-top: 48px;">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-      </form>
     </div>
   </div>
 
-  <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active in" id="thumb">
-      <div class="container">
-        <div class="row projects transitions-enabled" id="project-cards">
-          <%= render @discussions %>
-        </div>
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-xs-3 text-center">
+      <div class="btn-group">
+        <a href="#thumb" data-toggle="tab" class="btn btn-default">
+          <span class="glyphicon glyphicon-th"></span></a>
+        <a href="#list" data-toggle="tab" class="btn btn-default">
+          <span class="glyphicon glyphicon-th-list"></span></a>
       </div>
     </div>
 
-    <div class="tab-pane fade" id="list">
-      <div class="container">
-        <div class="col-sm-12">
-          <table class="table table-hover projects-table">
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th></th>
-              <th></th>
-            </tr>
+    <div class="col-xs-1"></div>
 
-          <% @discussions.each do |discussion| %>
-            <tr>
-              <td></td>
-              <td class="col-xs-9 text-center"><%= link_to(discussion) do %><h4><strong><%= discussion.title %></strong></h4></a><% end %></td>
-              <td>
-                <% if user_signed_in? %>
-                  <% if current_user == discussion.user || current_user.superadmin?  %>
-                  <%= link_to 'Edit', edit_discussion_path(discussion) %><% end %>
-                <% end %>
-              </td>
-              <td>
-                <% if user_signed_in? %>
-                  <% if current_user == discussion.user || current_user.superadmin?  %>
-                  <%= link_to 'Delete', discussion, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
+    <div class="col-xs-7">
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade" id="thumb">
+          <div class="projects transitions-enabled" id="project-cards">
+            <%= render @discussions %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade active in" id="list">          
+          <table class="table discussions-table">
+            <thead>
+              <tr>
+                <th>JOIN DISCUSSION</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @discussions.each do |discussion| %>
+              <tr>
+                <td><h2><%= link_to discussion.title, discussion %></h2></td>
+                <td>
+                  <% if user_signed_in? %>
+                    <% if current_user == discussion.user %>
+                      <%= link_to 'Edit', edit_discussion_path(discussion) %> | <%= link_to 'Delete', discussion, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
           </table>
         </div>
       </div>
     </div>
-  </div>
 
-  <br />
-
-  <div class="container text-center">
-    <%= link_to 'Create discussion', new_discussion_path, class: "btn btn-lg btn-success" %>
+    <div class="col-xs-2"></div>
   </div>
 
 </div>
