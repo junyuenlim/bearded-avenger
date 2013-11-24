@@ -42,4 +42,4 @@ $(document).ready(function () {
 
 $("#tooltip span").tooltip()
 $("#followers a").tooltip()
-$("#avatar a").tooltip()
+$("#comment a").tooltip()

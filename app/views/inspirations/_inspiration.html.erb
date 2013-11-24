@@ -1,41 +1,46 @@
 <div class="col-sm-6">
 	<div class="panel panel-default">
-		<div class="panel-body">
-			<% if inspiration.image? %>
-				<%= link_to(inspiration) do %>
-				<%= image_tag inspiration.image.url(:thumbnail), width: "100%" %><% end %>
+		<% if inspiration.image? %>
+			<%= link_to(inspiration) do %>
+			<%= image_tag inspiration.image.url(:thumbnail), width: "100%" %><% end %>
+		<% end %>
+		<div class="panel-body" id="followers">
+			<h4 style="margin-top: 0px;"><strong><%= link_to inspiration.title, inspiration %></strong></h4>
+			<p style="font-size: 12px; line-height: 1.2;">
+				<%= raw(truncate(inspiration.description, 
+											:omission => (link_to " . . . See more", inspiration), 
+											:length => 200)) %>
+			</p>
+			<%= link_to image_tag(inspiration.user.avatar.url(:thumb)), inspiration.user, :rel => "tooltip", :data => { :delay => 20, :title => inspiration.user.first_name, :placement => "right" } %>
+			<small><strong><%= inspiration.user.first_name %> <%= inspiration.user.last_name %></strong></small>
+			<% if inspiration.user == current_user %>
+				<small>
+					<%= link_to 'Edit', edit_inspiration_path(inspiration) %> | <%= link_to 'Delete', inspiration, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</small>
 			<% end %>
-			<h4><%= inspiration.title %></h4>
-			<p><%= inspiration.description %></p>
-			by <%= inspiration.user.first_name %>
+		</div>
 
-			<hr>
-
-			<div class="discussion-stats" id="tooltip">
-				<span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Views"></span><span><%= inspiration.impressionist_count %></span>
-				<span class="glyphicon glyphicon-thumbs-up" data-placement="bottom" rel="tooltip" title="Likes"></span><span><%= pluralize inspiration.likes.size, " Vote" %></span>
-			</div>
-
-			<div id="followers">
-				<% if user_signed_in? %>
-					<% if current_user.voted_up_on?(inspiration) %>
-						<%= link_to unlike_inspiration_path(inspiration, method: :get) do %>
-							<span class="glyphicon glyphicon-thumbs-up pull-right" style="color: #00CD00; font-size: 20px;"></span>
-						<% end %>
-					<% else %>
-						<%= link_to like_inspiration_path(inspiration, method: :get) do %>
-							<span class="glyphicon glyphicon-thumbs-up pull-right" style="font-size: 20px;"></span>
-						<% end %>
+		<div class="panel-footer">
+			<% if user_signed_in? %>
+				<% if current_user.voted_up_on?(inspiration) %>
+					<%= link_to unlike_inspiration_path(inspiration, method: :get) do %>
+						<span class="glyphicon glyphicon-thumbs-up pull-right" style="color: #00CD00; font-size: 20px;"></span>
+					<% end %>
+				<% else %>
+					<%= link_to like_inspiration_path(inspiration, method: :get) do %>
+						<span class="glyphicon glyphicon-thumbs-up pull-right" style="font-size: 20px;"></span>
 					<% end %>
 				<% end %>
-
-				<% if inspiration.user == current_user %>
-				<%= link_to 'Edit', edit_inspiration_path(inspiration) %> | <%= link_to 'Delete', inspiration, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-
-				<% for voter in inspiration.votes.up.by_type(User).voters %>
-					<%= link_to image_tag(voter.avatar.url(:thumb)), voter, :rel => "tooltip", :data => { :delay => 20, :title => voter.first_name } %>
+			<% else %>
+				<%= link_to like_inspiration_path(inspiration, method: :get) do %>
+					<span class="glyphicon glyphicon-thumbs-up pull-right" style="font-size: 20px;"></span>
 				<% end %>
-			</div>
+			<% end %>
+
+			<% if inspiration.votes.size > 0 %>
+				<span class="badge" style="background-color: #00CD00; font-weight: 400;"><%= pluralize inspiration.likes.size, "Supporter" %></span>
+			<% end %>
+
 		</div>
 	</div>
 </div>

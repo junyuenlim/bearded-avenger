@@ -1,4 +1,5 @@
 class InspirationsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def show
     @inspiration = Inspiration.find(params[:id])
@@ -51,7 +52,7 @@ class InspirationsController < ApplicationController
 
     respond_to do |format|
       if @inspiration.update_attributes(params[:inspiration])
-        format.html { redirect_to @inspiration, notice: 'inspiration was successfully updated.' }
+        format.html { redirect_to @inspiration.discussion, notice: 'Inspiration was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,33 +1,43 @@
 <body style="background: #f8f8f8;">
 
 <div class="discussion-page">
+
   <div class="container">
-      <div class="col-sm-4">
-        <%= image_tag(@discussion.cover.url(:thumb), width: "100%") %>
-      </div>
-      <div class="col-sm-8">
-        <% if user_signed_in? %>    
-          <% if current_user == @discussion.user || current_user.superadmin? %>
-            <%= link_to edit_discussion_path(@discussion) do %>
-              <div class="project-icon-right">
-                <span class="glyphicon glyphicon-edit glyphicon-project"></span>
-              </div>
+    <div class="panel panel-default">
+      <ol class="breadcrumb">
+        <li><%= link_to "Discussions", discussions_path %></li>
+        <li></li>
+      </ol>
+
+      <div class="panel-body">
+        <div class="col-sm-4">
+          <%= image_tag(@discussion.cover.url(:thumb), width: "100%") %>
+        </div>
+        <div class="col-sm-8">
+          <% if user_signed_in? %>    
+            <% if current_user == @discussion.user || current_user.superadmin? %>
+              <%= link_to edit_discussion_path(@discussion) do %>
+                <div class="project-icon-right">
+                  <span class="glyphicon glyphicon-edit glyphicon-project"></span>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
-        <h1 class="discussion-title"><%= @discussion.title %></h1>
-        <p><%= @discussion.description %></p>
+          <h1 class="discussion-title" style="margin-top: 0px;"><%= @discussion.title %></h1>
+          <p><%= @discussion.description %></p>
+        </div>
       </div>
+    </div>
   </div>
 
   <div class="container bubble">
     <div class="panel panel-default" style="margin-bottom: 0px;">
-      <div class="panel-heading">Brainstormmmmmm!</div>
+      <div class="panel-heading">Brainstorm!</div>
       
       <div class="panel-body">
         <div class="row">
 
-          <div class="col-sm-7">
+          <div class="col-sm-8">
             <table class="table">
               <thead>
                 <tr>
@@ -55,7 +65,7 @@
             
           </div>
           
-          <div class="col-sm-5">
+          <div class="col-sm-4">
             <table class="table">
             <thead>
               <tr>
@@ -72,7 +82,7 @@
                     <td>
                       <%= link_to image_tag(current_user.avatar.url(:thumb), width: "30"), current_user, :rel => "tooltip", :data => { :delay => 20, :title => current_user.first_name, :placement => "left" } %></td>
                     <td><%= f.text_area :comment, class: "form-control", rows: "2", :placeholder => "Write a comment..." %></p>
-                    <td style="padding: 8px 0px;">
+                    <td style="padding: 8px 0px; width: 35px;">
                       <button name="commit" type="submit" class="btn btn-sm btn-info">
                         <span class="glyphicon glyphicon-comment"></span>
                       </button>
@@ -83,7 +93,7 @@
                   <tr>
                     <td></td>
                     <td><%= link_to new_user_session_path, class: "btn btn-sm btn-info" do %>Login to Comment<% end %></td>
-                    <td></td>
+                    <td style="width: 35px;"></td>
               <% end %>
               <%= render @comments.reverse %>
             </tbody>

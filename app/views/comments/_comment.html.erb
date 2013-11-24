@@ -1,6 +1,10 @@
-<tr id="avatar">
+<tr id="comment">
   <td><%= link_to image_tag(comment.user.avatar.url(:thumb), width: "30"), comment.user, :rel => "tooltip", :data => { :delay => 20, :title => comment.user.first_name, :placement => "left" } %></td>
-  <td><%= comment.comment %></td>
+  <td><%= comment.comment %> 
+  	<% if comment.user = current_user %>
+  		<%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="glyphicon glyphicon-trash pull-right"></span><% end %>
+  	<% end %>
+  </td>
   <td>
   	<% if user_signed_in? %>
 	  	<% if current_user.voted_up_on?(comment) %>
@@ -16,10 +20,13 @@
 				<small style="color: #00CD00;"><%= comment.likes.size %></small>
 			<% end %>
 		<% end %>
-
 	<% else %>
-		<span class="glyphicon glyphicon-thumbs-up pull-right" style="color: #bbb;"></span>
-		<small style="color: #bbb;"><%= comment.likes.size %></small>
+		<%= link_to like_comment_path(comment, method: :get) do %>
+			<span class="glyphicon glyphicon-thumbs-up pull-right" style=""></span>
+		<% end %>
+		<% if comment.votes.size > 0 %>
+			<small style="color: #00CD00;"><%= comment.likes.size %></small>
+		<% end %>
 	<% end %>
    </td>
 </tr>
