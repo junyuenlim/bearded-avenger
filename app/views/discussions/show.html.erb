@@ -6,6 +6,7 @@
         <%= image_tag(@discussion.cover.url(:thumb), width: "100%") %>
       </div>
       <div class="col-sm-8">
+        <% if user_signed_in? %>    
           <% if current_user == @discussion.user || current_user.superadmin? %>
             <%= link_to edit_discussion_path(@discussion) do %>
               <div class="project-icon-right">
@@ -13,16 +14,19 @@
               </div>
             <% end %>
           <% end %>
-          <h1 class="discussion-title"><%= @discussion.title %></h1>
-          <p><%= @discussion.description %></p>
+        <% end %>
+        <h1 class="discussion-title"><%= @discussion.title %></h1>
+        <p><%= @discussion.description %></p>
       </div>
   </div>
 
   <div class="container bubble">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin-bottom: 0px;">
       <div class="panel-heading">Brainstormmmmmm!</div>
+      
       <div class="panel-body">
         <div class="row">
+
           <div class="col-sm-7">
             <table class="table">
               <thead>
@@ -30,15 +34,28 @@
                   <th><h4>IDEAS & INSPIRATIONS</h4></th>
                 </tr>
               </thead>
+
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="text-center" style="padding: 20px;">
+                      <% if user_signed_in? %>
+                        <button class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-pushpin"></span> Share Ideas & Inspirations</button>
+                      <% else %>
+                        <%= link_to new_user_session_path, class: "btn btn-sm btn-info" do %>Login to Share & Vote for Ideas<% end %>
+                      <% end %>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
-            <div class="text-center" style="padding: 20px;">
-              <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-          <span class="glyphicon glyphicon-pushpin"></span> Share Ideas & Inspirations</button></div>
-            <%= render @inspirations %>
+
+              <%= render @inspirations %>
+            
           </div>
           
           <div class="col-sm-5">
-
             <table class="table">
             <thead>
               <tr>
@@ -47,24 +64,35 @@
                 <th></th>
               </tr>
             </thead>
+
             <tbody>
-              <%= form_for([@discussion, @comment]) do |f|%>
-                <tr>
-                  <td><%= link_to image_tag(current_user.avatar.url(:thumb), width: "30"), current_user, :rel => "tooltip", :data => { :delay => 20, :title => current_user.first_name, :placement => "left" } %></td>
-                  <td><%= f.text_area :comment, class: "form-control", rows: "2", :placeholder => "Write a comment..." %></p>
-                  <td style="padding: 8px 0px;">
-                    <button name="commit" type="submit" class="btn btn-sm btn-info">
-                      <span class="glyphicon glyphicon-comment"></span>
-                    </button>
-                  </td>
-                <tr>
+              <% if user_signed_in? %>
+                <%= form_for([@discussion, @comment]) do |f|%>
+                  <tr>
+                    <td>
+                      <%= link_to image_tag(current_user.avatar.url(:thumb), width: "30"), current_user, :rel => "tooltip", :data => { :delay => 20, :title => current_user.first_name, :placement => "left" } %></td>
+                    <td><%= f.text_area :comment, class: "form-control", rows: "2", :placeholder => "Write a comment..." %></p>
+                    <td style="padding: 8px 0px;">
+                      <button name="commit" type="submit" class="btn btn-sm btn-info">
+                        <span class="glyphicon glyphicon-comment"></span>
+                      </button>
+                    </td>
+                  <tr>
+                <% end %>
+              <% else %>
+                  <tr>
+                    <td></td>
+                    <td><%= link_to new_user_session_path, class: "btn btn-sm btn-info" do %>Login to Comment<% end %></td>
+                    <td></td>
               <% end %>
               <%= render @comments.reverse %>
             </tbody>
             </table>
           </div>
+
         </div>
       </div>
+
     </div>
   </div>
 

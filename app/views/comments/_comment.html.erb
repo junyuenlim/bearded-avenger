@@ -2,15 +2,24 @@
   <td><%= link_to image_tag(comment.user.avatar.url(:thumb), width: "30"), comment.user, :rel => "tooltip", :data => { :delay => 20, :title => comment.user.first_name, :placement => "left" } %></td>
   <td><%= comment.comment %></td>
   <td>
-  	<% if current_user.voted_up_on?(comment) %>
-		<%= link_to unlike_comment_path(comment, method: :get) do %>
-			<span class="glyphicon glyphicon-thumbs-up pull-right" style="color: #00CD00; "></span>
+  	<% if user_signed_in? %>
+	  	<% if current_user.voted_up_on?(comment) %>
+			<%= link_to unlike_comment_path(comment, method: :get) do %>
+				<span class="glyphicon glyphicon-thumbs-up pull-right" style="color: #00CD00;"></span>
+			<% end %>
+			<small style="color: #00CD00;"><%= comment.likes.size %></small>
+		<% else %>
+			<%= link_to like_comment_path(comment, method: :get) do %>
+				<span class="glyphicon glyphicon-thumbs-up pull-right" style=""></span>
+			<% end %>
+			<% if comment.votes.size > 0 %>
+				<small style="color: #00CD00;"><%= comment.likes.size %></small>
+			<% end %>
 		<% end %>
+
 	<% else %>
-		<%= link_to like_comment_path(comment, method: :get) do %>
-			<span class="glyphicon glyphicon-thumbs-up pull-right" style=""></span>
-		<% end %>
+		<span class="glyphicon glyphicon-thumbs-up pull-right" style="color: #bbb;"></span>
+		<small style="color: #bbb;"><%= comment.likes.size %></small>
 	<% end %>
-	<small><%= comment.likes.size %></small>
    </td>
 </tr>

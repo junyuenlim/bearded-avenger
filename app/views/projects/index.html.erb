@@ -50,10 +50,18 @@
             <tr>
               <td></td>
               <td class="col-xs-9"><%= link_to(project) do %><strong><%= project.title %></strong></a><% end %></td>
-              <td><% if current_user == project.user || current_user.superadmin?  %>
-                <%= link_to 'Edit', edit_project_path(project) %><% end %></td>
-              <td><% if current_user == project.user || current_user.superadmin?  %>
-                <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+              <td>
+                <% if user_signed_in? %>
+                  <% if current_user == project.user || current_user.superadmin?  %>
+                  <%= link_to 'Edit', edit_project_path(project) %><% end %>
+                <% end %>
+              </td>
+              <td>
+                <% if user_signed_in? %>
+                  <% if current_user == project.user || current_user.superadmin?  %>
+                  <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
           </table>

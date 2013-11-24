@@ -1,4 +1,4 @@
-<div class="project-page">
+<div class="project-page" id="project">
   <div class="container">
     <div class="row" style="margin-top: 150px; margin-bottom: 20px;">
 
@@ -9,11 +9,13 @@
       </div>
 
       <div class="col-sm-2" style="margin-left: 20px; padding: 0px;">
-        <% if current_user == @project.user || current_user.superadmin? %>
-         <p>You are Project Owner</p>
-         <%= link_to edit_project_path(@project), class: "btn btn-sm btn-info" do %>
-          <span class="glyphicon glyphicon-edit"></span> Edit Project
-         <% end %>
+        <% if user_signed_in? %>
+          <% if current_user == @project.user || current_user.superadmin? %>
+           <p>You are Project Owner</p>
+           <%= link_to edit_project_path(@project), class: "btn btn-sm btn-info" do %>
+            <span class="glyphicon glyphicon-edit"></span> Edit Project
+           <% end %>
+          <% end %>
         <% end %>
       </div>
 

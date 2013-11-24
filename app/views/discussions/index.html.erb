@@ -50,10 +50,18 @@
             <tr>
               <td></td>
               <td class="col-xs-9 text-center"><%= link_to(discussion) do %><h4><strong><%= discussion.title %></strong></h4></a><% end %></td>
-              <td><% if current_user == discussion.user || current_user.superadmin?  %>
-                <%= link_to 'Edit', edit_discussion_path(discussion) %><% end %></td>
-              <td><% if current_user == discussion.user || current_user.superadmin?  %>
-                <%= link_to 'Delete', discussion, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+              <td>
+                <% if user_signed_in? %>
+                  <% if current_user == discussion.user || current_user.superadmin?  %>
+                  <%= link_to 'Edit', edit_discussion_path(discussion) %><% end %>
+                <% end %>
+              </td>
+              <td>
+                <% if user_signed_in? %>
+                  <% if current_user == discussion.user || current_user.superadmin?  %>
+                  <%= link_to 'Delete', discussion, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
           </table>
