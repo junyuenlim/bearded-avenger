@@ -1,14 +1,19 @@
 <div class="project-card">
-	<%= link_to(project) do %><%= image_tag project.thumbnail.url(:medium), width: "100%" %><% end %>
+	<div class="project-image">
+		<%= link_to(project) do %>
+			<div style="background: url('<%= project.thumbnail.url(:medium) %>') no-repeat center; height: 140px; background-size: 100%;"></div>
+		<% end %>
+	</div>
+
 	<div class="project-info">
 		<div class="project-title">
-			<%= link_to(project) do %><h5><%= project.title %></h5></a><% end %>
-		</div>
-		<% if current_page?(projects_path) %>
-			<% unless project.city_list.count == 0 %>
-			<hr>
-				<p><small>in <%= project.city_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></small></p>
+			<%= link_to(project) do %>
+				<h5><strong><%= project.title %></h5></strong></a>
 			<% end %>
+		</div>
+		<% unless current_page?(projects_path) %>
+			<hr>
+			<p><small>in <%= project.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></small></p>
 		<% end %>
 	</div>
 	<div class="project-stats" id="tooltip">

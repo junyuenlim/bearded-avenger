@@ -31,7 +31,6 @@ ActiveadminTest::Application.routes.draw do
 
   get 'about' => "pages#about"
   get 'category/:tag', to: 'projects#index', as: :tag
-  get 'city/:city', to: 'projects#index', as: :tag
 
   ActiveAdmin.routes(self)
   

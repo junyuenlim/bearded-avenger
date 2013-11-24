@@ -62,4 +62,6 @@ module ActiveadminTest
     # Required for Devise on Heroku
     config.assets.initialize_on_precompile = false
   end
+
+  ActsAsTaggableOn.remove_unused_tags = true
 end

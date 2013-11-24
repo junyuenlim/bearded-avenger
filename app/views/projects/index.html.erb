@@ -1,85 +1,101 @@
-<div style="margin: 50px 0px;" id="projects">
+<div style="margin-bottom: 100px;" id="projects">
 
-  <div class="container">
-    <div class="col-xs-4">
-      <h2>Featured Projects</h2>
-    </div>
+  <div class="row" style="background: #f8f8f8; height: 200px;">
+    <div class="container">
+      <div class="row" style="margin-top: 50px;">
+        <div class="col-xs-4">
+          <h2>Featured Projects</h2>
+        </div>
 
-    <div class="col-xs-4">
-      <div class="btn-toolbar" role="toolbar" style="margin-top: 48px; padding-left: 100px;">
-        <div class="btn-group">
-          <a href="#thumb" data-toggle="tab" class="btn btn-default">
-            <span class="glyphicon glyphicon-th"></span></a>
-          <a href="#list" data-toggle="tab" class="btn btn-default">
-            <span class="glyphicon glyphicon-th-list"></span></a>
+        <div class="col-xs-4">
+        </div>
+        
+        <div class="col-xs-4">
+          <form class="navbar-form navbar-left pull-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
         </div>
       </div>
-    </div>
-    
-    <div class="col-xs-4">
-      <form class="navbar-form navbar-left pull-right" role="search" style="margin-top: 48px;">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-      </form>
     </div>
   </div>
 
-  <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active in" id="thumb">
-      <div class="container">
-        <div class="row projects transitions-enabled" id="project-cards">
-          <%= render @projects %>
+  <div class="container">
+    <div class="row" style="margin-top: 20px;">
+      
+      <div class="col-sm-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">Categories<span class="pull-right"><%= link_to "View All", projects_path %></span></div>
+          <div class="panel-body">
+            <ul class="list-unstyled">
+            <% tag_cloud Project.tag_counts, %w[s] do |tag, css_class| %>
+              <li><%= link_to tag.name, tag_path(tag.name), class: css_class %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel-body text-center">
+          <%= link_to new_project_path, class: "btn btn-success" do %>
+            <span class="glyphicon glyphicon-folder-open"></span><span style="margin-left: 10px">Start Project</span>
+          <% end %>
         </div>
       </div>
-    </div>
 
-    <div class="tab-pane fade" id="list">
-      <div class="container">
-        <div class="col-sm-12">
-          <table class="table table-hover projects-table">
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th></th>
-              <th></th>
-            </tr>
-
-          <% @projects.each do |project| %>
-            <tr>
-              <td></td>
-              <td class="col-xs-9"><%= link_to(project) do %><strong><%= project.title %></strong></a><% end %></td>
-              <td>
-                <% if user_signed_in? %>
-                  <% if current_user == project.user || current_user.superadmin?  %>
-                  <%= link_to 'Edit', edit_project_path(project) %><% end %>
-                <% end %>
-              </td>
-              <td>
-                <% if user_signed_in? %>
-                  <% if current_user == project.user || current_user.superadmin?  %>
-                  <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-                <% end %>
-              </td>
-            </tr>
+      <div class="col-sm-9">
+        <ol class="breadcrumb">
+          <li><%= link_to "Projects", projects_path %></li>
+          <% unless current_page?(projects_path) %>
+            <li></li>
           <% end %>
+          <div class="btn-group" style="left: 530px;">
+            <a href="#thumb" data-toggle="tab" class="btn btn-default">
+              <span class="glyphicon glyphicon-th"></span></a>
+            <a href="#list" data-toggle="tab" class="btn btn-default">
+              <span class="glyphicon glyphicon-th-list"></span></a>
+          </div>
+        </ol>
+
+
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="thumb">
+            <div class="projects transitions-enabled" id="project-cards">
+              <%= render @projects %>
+            </div>
+          </div>
+
+        <div class="tab-pane fade" id="list">          
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @projects.each do |project| %>
+              <tr>
+                <td></td>
+                <td><%= link_to project.title, project %></td>
+                <td>
+                  <% if user_signed_in? %>
+                    <% if current_user == project.user %>
+                      <%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
           </table>
         </div>
       </div>
+
     </div>
-  </div>
-
-  <br />
-  <!--
-  <div class="container" id="tag_cloud">
-    <% tag_cloud Project.tag_counts, %w[s m l] do |tag, css_class| %>
-      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-    <% end %>
-  </div>-->
-
-  <div class="container text-center">
-    <%= link_to 'Create Project', new_project_path, class: "btn btn-lg btn-success" %>
   </div>
 
 </div>

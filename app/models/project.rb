@@ -2,10 +2,10 @@ class Project < ActiveRecord::Base
   is_impressionable
   acts_as_votable
 
-  attr_accessible :description, :title, :thumbnail, :tag_list, :published, :city_list
+  attr_accessible :description, :title, :thumbnail, :tag_list, :published
 
   acts_as_taggable
-  acts_as_taggable_on :categories, :city
+  acts_as_taggable_on :categories
 
   validates :user_id, presence: true
   has_attached_file :thumbnail, styles: { medium: "560x400>"},

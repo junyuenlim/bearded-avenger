@@ -4,8 +4,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    if params[:city]
-      @projects = Project.tagged_with(params[:city]).where(:published => true)
+    if params[:tag]
+      @projects = Project.tagged_with(params[:tag]).where(:published => true)
     else 
       @projects = Project.where(:published => true)
     end

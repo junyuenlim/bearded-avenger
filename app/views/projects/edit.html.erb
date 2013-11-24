@@ -22,6 +22,11 @@
   		    <%= f.label :title %>
   		    <%= f.text_field :title, class: "form-control" %>
   		  </div>
+
+        <div class="form-group">
+          <%= f.label :tag_list, "Pick Category" %>
+          <%= f.select :tag_list, options_for_select([["Select One", ""], "Urban Transport", "Waste Management", "Infrastructure & Public Facilities", "Recreation & Open Space", "Lifestyle & Culture", "Safety & Security"]), class: "form-control input-lg" %>
+        </div>
       </div>
 
       <div class="col-sm-2" style="margin-left: 60px; padding: 0px;">
