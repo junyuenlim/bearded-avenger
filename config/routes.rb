@@ -16,6 +16,12 @@ ActiveadminTest::Application.routes.draw do
       get "unlike", to: "inspirations#downvote"
     end
   end
+  resources :comments do
+    member do
+      get "like", to: "comments#upvote"
+      get "unlike", to: "comments#downvote"
+    end
+  end
   
   authenticated :user do
     root :to => "pages#index"

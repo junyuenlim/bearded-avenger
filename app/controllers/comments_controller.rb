@@ -15,4 +15,16 @@ class CommentsController < ApplicationController
       end
     end
   end
+
+  def upvote
+    @comment = Comment.find(params[:id])
+    @comment.liked_by current_user
+    redirect_to :back, notice: "Thank you for voting"
+  end
+
+  def downvote
+    @comment = Comment.find(params[:id])
+    @comment.unliked_by current_user
+    redirect_to :back, notice: "Thank you for voting"
+  end
 end

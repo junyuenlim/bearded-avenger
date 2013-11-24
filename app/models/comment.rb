@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  acts_as_votable
   attr_accessible :comment
 
   include ActsAsCommentable::Comment
