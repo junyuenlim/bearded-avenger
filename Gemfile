@@ -36,6 +36,7 @@ gem 'masonry-rails', '~> 0.2.0'
 gem 'jquery-turbolinks'
 gem "impressionist", "~> 1.4.12"
 gem 'acts_as_commentable', '3.0.1'
+gem 'acts_as_votable', '~> 0.8.0'
 
 # City Country Select
 gem "carmen-rails", "~> 1.0.0"

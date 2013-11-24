@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   is_impressionable
+  acts_as_voter
 
   # Setup accessible (or protected) attributes for your model
   attr_accessor :password, :password_confirmation, :current_password

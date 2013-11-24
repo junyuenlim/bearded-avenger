@@ -11,11 +11,28 @@
 
 			<hr>
 
+			<div class="discussion-stats" id="tooltip">
+				<span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Views"></span><span><%= inspiration.impressionist_count %></span>
+				<span class="glyphicon glyphicon-thumbs-up" data-placement="bottom" rel="tooltip" title="Likes"></span><span><%= pluralize inspiration.likes.size, " Vote" %></span>
+			</div>
+
+			<div id="vote">
+				<% if current_user.voted_up_on?(inspiration) %>
+					<%= link_to unlike_inspiration_path(inspiration, method: :get) do %>
+						<span class="glyphicon glyphicon-thumbs-up pull-right" style="color: #00CD00; font-size: 20px;"></span>
+					<% end %>
+				<% else %>
+					<%= link_to like_inspiration_path(inspiration, method: :get) do %>
+						<span class="glyphicon glyphicon-thumbs-up pull-right" style="font-size: 20px;"></span>
+					<% end %>
+				<% end %>
+			</div>
 			<% if inspiration.user == current_user %>
 			<%= link_to 'Edit', edit_inspiration_path(inspiration) %> | <%= link_to 'Delete', inspiration, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-			<div class="discussion-stats" id="tooltip">
-				<span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Ideas"></span><span><%= inspiration.impressionist_count %></span>
-			</div>
+
+			<% for voter in inspiration.votes.up.by_type(User).voters %>
+				<%= link_to image_tag(voter.avatar.url(:thumb)), voter, :rel => "tooltip", :data => { :delay => 20, :title => voter.first_name } %>
+			<% end %>
 		</div>
 	</div>
 </div>

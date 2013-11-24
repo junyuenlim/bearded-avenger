@@ -72,4 +72,16 @@ class InspirationsController < ApplicationController
     end
   end
 
+  def upvote
+    @inspiration = Inspiration.find(params[:id])
+    @inspiration.liked_by current_user
+    redirect_to :back, notice: "Thank you for voting"
+  end
+
+  def downvote
+    @inspiration = Inspiration.find(params[:id])
+    @inspiration.unliked_by current_user
+    redirect_to :back, notice: "Thank you for voting"
+  end
+
 end
