@@ -60,7 +60,14 @@
             <tbody>
               <% @discussions.each do |discussion| %>
               <tr>
-                <td><h2><%= link_to discussion.title, discussion %></h2></td>
+                <td>
+                  <h2><%= link_to discussion.title, discussion %></h2>
+                  <div class="discussion-stats" id="tooltip">
+                    <span class="glyphicon glyphicon-pushpin" data-placement="bottom" rel="tooltip" title="Ideas & Inspirations"></span><span><%= discussion.inspirations.count %></span>
+                    <span class="glyphicon glyphicon-comment" data-placement="bottom" rel="tooltip" title="Comments"></span><span><%= discussion.comments.count %></span>
+                    <span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Views"></span><span><%= discussion.impressionist_count %></span>
+                  </div>
+                </td>
                 <td>
                   <% if user_signed_in? %>
                     <% if current_user == discussion.user %>
