@@ -26,6 +26,9 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# Dashboard
+gem 'public_activity'
+
 # Projects
 gem 'bootstrap-wysihtml5-rails', branch: 'b3', github: 'Nerian/bootstrap-wysihtml5-rails'
 gem "paperclip", "~> 3.0"

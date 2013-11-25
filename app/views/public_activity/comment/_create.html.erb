@@ -1,0 +1,16 @@
+<td>
+	<span class="text-muted">commented on</span></br>
+	<% if activity.recipient %>
+	  <%= link_to activity.recipient.title, activity.recipient %>
+	  
+	  <blockquote>
+		<p><%= activity.trackable.comment %></p>
+		<small><%= time_ago_in_words(activity.trackable.created_at) %> ago</small>
+	  </blockquote>
+
+	  
+	<% else %>
+	  <span class="text-danger">a comment which has been removed</span>
+	<% end %>
+</td>
+<td><span class="glyphicon glyphicon-comment" style="color: #ccc;"></span></td>

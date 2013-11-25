@@ -1,0 +1,9 @@
+<td>
+	<span class="text-muted">pinned something on</span></br>
+	
+	<% if activity.trackable %>
+	  <%= link_to activity.trackable.discussion.title, activity.trackable.discussion %>
+	<% else %>
+	  which has since been removed 
+	<% end %>
+</td>

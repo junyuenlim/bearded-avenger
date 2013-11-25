@@ -1,5 +1,6 @@
 ActiveadminTest::Application.routes.draw do
 
+  resources :activities
   resources :projects do
     member do
       get "follow", to: "projects#follow"

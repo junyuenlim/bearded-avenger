@@ -1,0 +1,18 @@
+<table class="table table-hover" id="activity">
+    <thead>
+      <tr>
+      	<th></th>
+        <th><h4>COMMUNITY</h4></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+		<% @activities.each do |activity| %>
+		  <tr>
+		  	<td id="avatar"><%= link_to image_tag(activity.owner.avatar.url(:thumb), width: "40", class: "img-circle"), activity.owner, :rel => "tooltip", :data => { :delay => 20, :title => activity.owner.first_name, :placement => "left" } %></td>
+		  	<%= render_activity activity %>
+		  </tr>
+		<% end %>
+    </tbody>
+</table>

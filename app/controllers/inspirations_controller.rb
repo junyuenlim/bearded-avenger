@@ -36,6 +36,7 @@ class InspirationsController < ApplicationController
 
     respond_to do |format|
       if @inspiration.save
+        @inspiration.create_activity :create, owner: current_user
         format.html { redirect_to @discussion, notice: 'Inspiration was successfully created.' }
         format.json { render json: @inspiration, status: :created, location: @inspiration }
       else

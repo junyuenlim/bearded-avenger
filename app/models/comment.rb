@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  include PublicActivity::Common
+
   acts_as_votable
   attr_accessible :comment
 

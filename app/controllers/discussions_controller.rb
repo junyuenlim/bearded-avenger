@@ -21,6 +21,8 @@ class DiscussionsController < ApplicationController
     @inspiration = @discussion.inspirations.build
     @comment = @discussion.comments.new
 
+    @inspiration.destroy
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @discussion }
@@ -48,6 +50,7 @@ class DiscussionsController < ApplicationController
 
     respond_to do |format|
       if @discussion.save
+        @discussion.create_activity :create, owner: current_user
         format.html { redirect_to @discussion, notice: 'Discussion was successfully created.' }
         format.json { render json: @discussion, status: :created, location: @discussion }
       else
@@ -64,6 +67,7 @@ class DiscussionsController < ApplicationController
 
     respond_to do |format|
       if @discussion.update_attributes(params[:discussion])
+        @discussion.create_activity :create, owner: current_user
         format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }
         format.json { head :no_content }
       else

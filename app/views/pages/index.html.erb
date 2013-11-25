@@ -1,8 +1,8 @@
 <% title "Dashboard" %>
 
-<div class="container" id="pages">
+<div class="container">
 	<div class="col-xs-6">
-		<div class="panel panel-default">
+		<div style="background: #f8f8f8; height: 150px;">
 			<div class="panel-body">
 				<%= link_to projects_path, class: "btn btn-lg btn-success" do %>
 					Projects
@@ -12,12 +12,38 @@
 	</div>
 	
 	<div class="col-xs-6">
-		<div class="panel panel-default">
+		<div style="background: #f8f8f8; height: 150px;">
 			<div class="panel-body">
 				<%= link_to discussions_path, class: "btn btn-lg btn-success" do %>
 					Discussions
 				<% end %>
 			</div>
 		</div>
+
+		<%= render 'pages/activity' %>
+
+		<table class="table">
+	        <thead>
+	          <tr>
+	            <th><h4>TITLES</h4></th>
+	          </tr>
+	        </thead>
+
+	        <tbody>
+				<% @discussions.each do |discussion| %>
+				<tr>
+					<td>
+					  <h4><%= link_to discussion.title, discussion %></h4>
+					  <div class="discussion-stats" id="tooltip">
+					    <span class="glyphicon glyphicon-pushpin" data-placement="bottom" rel="tooltip" title="Ideas & Inspirations"></span><span><%= discussion.inspirations.count %></span>
+					    <span class="glyphicon glyphicon-comment" data-placement="bottom" rel="tooltip" title="Comments"></span><span><%= discussion.comments.count %></span>
+					    <span class="glyphicon glyphicon-eye-open" data-placement="bottom" rel="tooltip" title="Views"></span><span><%= discussion.impressionist_count %></span>
+					  </div>
+					</td>
+				</tr>
+				<% end %>
+	        </tbody>
+        </table>
+
 	</div>
 </div>

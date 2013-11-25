@@ -1,4 +1,6 @@
 class Inspiration < ActiveRecord::Base
+  include PublicActivity::Common
+  
   is_impressionable
   acts_as_votable
   

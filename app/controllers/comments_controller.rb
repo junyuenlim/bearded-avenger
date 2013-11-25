@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @comment.create_activity :create, owner: current_user, recipient: @discussion
         format.html { redirect_to @discussion, notice: 'Comment added.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
