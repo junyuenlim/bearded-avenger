@@ -1,5 +1,11 @@
 <% title @project.title %>
 
+<% content_for :head do %>
+  <%= tag :meta, property: "og:title", content: @project.title %>
+  <%= tag :meta, property: "og:url", content: project_url(@project) %>
+  <%= tag :meta, property: "og:image", content: image_path(@project.thumbnail.url(:medium)) %>
+<% end %>
+
 <div class="project-page" id="project">
   <div class="container">
     <div class="row" style="margin-top: 150px; margin-bottom: 20px;">

@@ -4,6 +4,11 @@
   <title><%= yield (:title) %> | CrowdCities</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
+  <%= tag :meta, property: "fb:app_id", content: ENV["FACEBOOK_APP_ID"] %>
+  <%= tag :meta, property: "og:site_name", content: "CrowdCities" %>
+  <%= tag :meta, property: "og:type", content: "crowdcities:website" %>
+  <%= yield :head %>
+  <%= tag :meta, property: "og:image", content: "http://www.crowdcities.com/assets/crowdcities-brick.jpg" %>
   <script type="text/javascript" src="//use.typekit.net/raj4xxw.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>

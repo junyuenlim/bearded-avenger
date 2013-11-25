@@ -1,5 +1,11 @@
 <% title @discussion.title %>
 
+<% content_for :head do %>
+  <%= tag :meta, property: "og:title", content: @discussion.title %>
+  <%= tag :meta, property: "og:url", content: discussion_url(@discussion) %>
+  <%= tag :meta, property: "og:image", content: image_path(@discussion.cover.url(:thumb)) %>
+<% end %>
+
 <body style="background: #f8f8f8;">
 
 <div class="discussion-page">
