@@ -9,6 +9,7 @@
 
     <table class="table">
       <tbody>
+
         <tr>
           <td>1</td>
           <td>
@@ -32,6 +33,18 @@
             <% end %>
           </td>
         </tr>
+
+        <tr>
+          <td>2</td>
+          <td>
+            <div class="fb-share-button" data-href='http://www.facebook.com/sharer.php?u=<%= request.original_url %>' data-type="button"></div>
+
+            <%= link_to "Twitter", "https://twitter.com/share", class: "twitter-share-button", :data => { :url => "http://crowdciti.es"+request.fullpath, :via => "crowdcities", :count => "none"} %>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </td>
+          <td></td>
+        </tr>
+
       </tbody>
     </table>
 

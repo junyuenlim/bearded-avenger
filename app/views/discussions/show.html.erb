@@ -40,7 +40,16 @@
 
   <div class="container bubble">
     <div class="panel panel-default" style="margin-bottom: 0px;">
-      <div class="panel-heading">Brainstorm!</div>
+      <div class="panel-heading">
+        Brainstorm!
+        <div class="pull-right">
+          <div class="fb-share-button" data-href='http://www.facebook.com/sharer.php?u=<%= request.original_url %>' data-type="button"></div>
+
+          <%= link_to "Twitter", "https://twitter.com/share", class: "twitter-share-button", :data => { :url => "http://crowdciti.es"+request.fullpath, :via => "crowdcities", :count => "none"} %>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+      </div>
+
       
       <div class="panel-body">
         <div class="row">

@@ -20,9 +20,9 @@ $border-radius-small: 3px;
 body {height: 100%;}
 p {}
 
-.btn-default {
-	border: 1px solid #ccc !important;
-}
+.btn-default {border: 1px solid #ccc !important;}
+.btn-facebook {color: white; background-color: #3B5998; font-family: Arial;}
+.fb-share-button {top: -6px; margin-right: 5px;}
 
 .btn {
 	border: none;
