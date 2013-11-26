@@ -1,76 +1,102 @@
 <% title "Edit Project" %>
 
+<body style="background: #f8f8f8;">
+
 <div class="project-cover">
 </div>
-
-<div class="project-page">
-  <%= form_for(@project) do |f| %>
+  
+<div class="project-page" id="project">
   <div class="container">
-    <div class="row" style="margin-top: 30px; margin-bottom: 30px;">
-      <div class="col-sm-8" style="width: 60%; padding-left: 0px;">
-  		  <% if @project.errors.any? %>
-  		    <div id="error_explanation">
-  		      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+    <%= form_for(@project) do |f| %>
+    <% if @project.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-  		      <ul>
-  		      <% @project.errors.full_messages.each do |msg| %>
-  		        <li><%= msg %></li>
-  		      <% end %>
-  		      </ul>
-  		    </div>
-  		  <% end %>
-
-        <div class="form-group">
-  		    <%= f.label :title %>
-  		    <%= f.text_field :title, class: "form-control" %>
-  		  </div>
-
-        <div class="form-group">
-          <%= f.label :tag_list, "Pick Category" %>
-          <%= f.select :tag_list, options_for_select([["Select One", ""], "Urban Transport", "Waste Management", "Infrastructure & Public Facilities", "Recreation & Open Space", "Lifestyle & Culture", "Safety & Security"]), class: "form-control input-lg" %>
-        </div>
+        <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
       </div>
+    <% end %>
 
-      <div class="col-sm-2" style="margin-left: 60px; padding: 0px;">
-        <div class="form-group">
-          <%= f.label :published, "Publish?" %>
-          <%= f.check_box :published %>
-        </div>
-			<div class="form-group">
-				<%= f.submit class: "btn btn-lg btn-primary" %>
-			</div>
-			<%= link_to 'Show', @project %> |
-			<%= link_to 'Back', @project %>
-      </div>
-    </div>
+      <div class="row">
 
-    <div class="row" style="margin-top: 30px;">
-      <div class="col-sm-8 project-box" style="width: 65%; min-height: 800px;">
-    		<div class="project-icon-right">
-    			<span class="glyphicon glyphicon-edit glyphicon-project"></span>
-    		</div>
-
-        <div class="form-group project-box-content" id="wysihtml5">
-  		    <%= f.label :description %>
-  		    <%= f.text_area :description, class: "form-control wysihtml5", rows: "30" %>
-		    </div>
-      </div>
-
-      <%= render 'projects/action_card' %>
-      <%= render 'projects/stakeholder_card' %>
-
-      <div class="col-sm-4">
-        <div class="panel panel-default">
-          <%= image_tag @project.thumbnail.url(:medium), width: "100%" %>
-          <div class="panel-body">
-            <%= f.label "Thumbnail image" %>
-            <%= f.file_field :thumbnail %>
+        <div class="col-sm-8">
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
           </div>
-          <div class="panel-footer"><small>Ideal size: 560px x 400px, JPG/PNG/GIF no larger than 5mb</small></div>
+
+          <div class="form-group">
+            <%= f.label :tag_list, "Pick Category" %>
+            <%= f.select :tag_list, options_for_select([["Select One", ""], "Urban Transport", "Waste Management", "Infrastructure & Public Facilities", "Recreation & Open Space", "Lifestyle & Culture", "Safety & Security"]), class: "form-control input-lg" %>
+          </div>
+
+          <div class="panel panel-default" style="margin-bottom: 0px;">
+            <div class="panel-body">
+              <%= f.label :description %>
+              <%= f.text_area :description, class: "form-control wysihtml5", rows: "20" %>
+            </div>
+            <div class="panel-footer">
+              <span class="text-muted"><small>Last updated <%= time_tag @project.updated_at %></small></span>
+            </div>
+          </div>
         </div>
+
+        <div class="col-sm-4" id="">
+
+            <div class="panel-body">
+              <div class="form-group">
+                <%= f.submit class: "btn btn-primary" %>
+                <%= f.check_box :published %>
+                <%= f.label :published, "Publish?" %>
+              </div>
+            </div>
+
+          <!-- NEED LIST -->
+          <div class="panel panel-default">
+            <div class="panel-heading">WHAT WE NEED</div>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <p><strong>Followers</strong> (<%= @project.likes.size %>/10)</p>
+                <div class="progress">
+                  <div id="followersprogress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= number_with_precision(((@project.likes.size.to_f / 10) * 100), :precision => 0) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= number_to_percentage((@project.likes.size.to_f / 10 * 100), :precision => 2) %>;">
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- ACTION CARD -->
+          <div class="panel panel-default">
+            <div class="panel-heading" id="project">
+              ACTION
+              <span class="pull-right">
+                <%= link_to "#", :rel => "tooltip", :data => { :delay => 20, :title => "Action Card: Here is a list of action steps you could take to help make the project happen.", :placement => "top" } do %>?<% end %>
+              </span>
+            </div>
+
+            <table class="table">
+              <tbody>
+                <%= render 'projects/follow_form' %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel panel-default">
+            <%= image_tag @project.thumbnail.url(:medium), width: "100%" %>
+            <div class="panel-body">
+              <%= f.label "Thumbnail image", class: "text-muted" %>
+              <%= f.file_field :thumbnail %>
+            </div>
+            <div class="panel-footer"><small>Ideal size: 560px x 400px, JPG/PNG/GIF <5mb</small></div>
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>

@@ -1,7 +1,23 @@
-<div class="text-center" id="follow_form">
-	<% if current_user.voted_up_on?(@project) %>
-		<%= render "projects/unfollow" %>
-	<% else %>
-		<%= render "projects/follow" %>
-	<% end %>
-</div>
+<tr>
+  <td>1</td>
+  <td>
+    <% if user_signed_in? %>
+      <% if current_user.voted_up_on?(@project) %>
+        <%= render "projects/unfollow" %>
+      <% else %>
+        <%= render "projects/follow" %>
+      <% end %>
+    <% else %>
+      <%= link_to follow_project_path(@project, method: :get) do %>
+        <button class="btn btn-success">Follow Project</button>
+      <% end %>
+    <% end %>
+  </td>
+  <td>
+    <% if user_signed_in? %>
+      <% if current_user.voted_up_on?(@project) %>
+        <%= render "projects/checkbox" %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

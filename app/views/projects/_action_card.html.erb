@@ -1,52 +1,28 @@
-<div class="col-sm-4">
-  <div class="panel panel-default">
-    <div class="panel-heading" id="project">
-      ACTION
-      <span class="pull-right">
-        <%= link_to "#", :rel => "tooltip", :data => { :delay => 20, :title => "Action Card: Here is a list of action steps you could take to help make the project happen.", :placement => "top" } do %>?<% end %>
-      </span>
-    </div>
-
-    <table class="table">
-      <tbody>
-
-        <tr>
-          <td>1</td>
-          <td>
-            <% if user_signed_in? %>
-              <% if current_user.voted_up_on?(@project) %>
-                <%= render "projects/unfollow" %>
-              <% else %>
-                <%= render "projects/follow" %>
-              <% end %>
-            <% else %>
-              <%= link_to follow_project_path(@project, method: :get) do %>
-                <button class="btn btn-success">Follow Project</button>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if user_signed_in? %>
-              <% if current_user.voted_up_on?(@project) %>
-                <%= render "projects/checkbox" %>
-              <% end %>
-            <% end %>
-          </td>
-        </tr>
-
-        <tr>
-          <td>2</td>
-          <td>
-            <div class="fb-share-button" data-href='http://www.facebook.com/sharer.php?u=<%= request.original_url %>' data-type="button"></div>
-
-            <%= link_to "Twitter", "https://twitter.com/share", class: "twitter-share-button", :data => { :url => "http://crowdciti.es"+request.fullpath, :via => "crowdcities", :count => "none"} %>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          </td>
-          <td></td>
-        </tr>
-
-      </tbody>
-    </table>
-
+<div class="panel panel-default">
+  <div class="panel-heading" id="project">
+    ACTION
+    <span class="pull-right">
+      <%= link_to "#", :rel => "tooltip", :data => { :delay => 20, :title => "Action Card: Here is a list of action steps you could take to help make the project happen.", :placement => "top" } do %>?<% end %>
+    </span>
   </div>
+
+  <table class="table">
+    <tbody>
+
+      <%= render 'projects/follow_form' %>
+
+      <tr>
+        <td>2</td>
+        <td>
+          <div class="fb-share-button" data-href='http://www.facebook.com/sharer.php?u=<%= request.original_url %>' data-type="button"></div>
+
+          <%= link_to "Twitter", "https://twitter.com/share", class: "twitter-share-button", :data => { :url => "http://crowdciti.es"+request.fullpath, :via => "crowdcities", :count => "none"} %>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
 </div>

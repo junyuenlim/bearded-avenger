@@ -1,8 +1,8 @@
-<div class="bubble col-sm-8">
-	<div class="card" style="background: white; min-height: 800px;">
-	  <div class="project-box-content">
-	    <p><%= @project.description.html_safe %></p>
-	    <p class="text-muted"><small><%= time_tag @project.updated_at %></small></p>
-	  </div>
-	</div>
+<div class="panel panel-default" style="margin-bottom: 0px;">
+  <div class="panel-body">
+    <p><%= @project.description.html_safe %></p>
+  </div>
+  <div class="panel-footer">
+  	<span class="text-muted"><small>Last updated <%= time_tag @project.updated_at %></small></span>
+  </div>
 </div>
