@@ -10,33 +10,7 @@
 
 <div class="discussion-page">
 
-  <div class="container">
-    <div class="panel panel-default">
-      <ol class="breadcrumb">
-        <li><%= link_to "Discussions", discussions_path %></li>
-        <li></li>
-      </ol>
-
-      <div class="panel-body">
-        <div class="col-sm-4">
-          <%= image_tag(@discussion.cover.url(:thumb), width: "100%") %>
-        </div>
-        <div class="col-sm-8">
-          <% if user_signed_in? %>    
-            <% if current_user == @discussion.user || current_user.superadmin? %>
-              <%= link_to edit_discussion_path(@discussion) do %>
-                <div class="project-icon-right">
-                  <span class="glyphicon glyphicon-edit glyphicon-project"></span>
-                </div>
-              <% end %>
-            <% end %>
-          <% end %>
-          <h1 class="discussion-title" style="margin-top: 0px;"><%= @discussion.title %></h1>
-          <p><%= @discussion.description %></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'discussions/title_card' %>
 
   <div class="container bubble">
     <div class="panel panel-default" style="margin-bottom: 0px;">
@@ -127,10 +101,12 @@
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="createLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
+        <ol class="breadcrumb">
+          <li><%= @discussion.title %></li>
+        </ol>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h3 class="modal-title" id="createLabel">Contribute Idea / Inspiration</h3>
-          to <%= link_to @discussion.title, @discussion %>
         </div>
         <%= render 'inspirations/form' %>
       </div><!-- /.modal-content -->

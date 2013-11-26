@@ -80,6 +80,8 @@
 					<%= link_to 'Edit', edit_inspiration_path(inspiration) %> | <%= link_to 'Delete', inspiration, method: :delete, data: { confirm: 'Are you sure?' } %>
 				</small>
 			<% end %>
+
+			<small class="pull-right text-muted" style="margin-top: 6px;">Created <%= time_ago_in_words(inspiration.created_at) %> ago</small>
 		</div>
 
 	  </div><!-- /.modal-content -->

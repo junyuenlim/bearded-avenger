@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="panel panel-default">
+    <ol class="breadcrumb" style="margin-bottom: 15px;">
+      <li><%= link_to "Discussions", discussions_path %></li>
+      <div class="pull-right">
+        <% if user_signed_in? %>    
+            <% if current_user == @discussion.user %>
+              <%= link_to "Edit Discussion", edit_discussion_path(@discussion), class: "btn btn-xs btn-success" %>
+            <% end %>
+          <% end %>
+      </div>
+    </ol>
+    
+    <div class="col-sm-4">
+      <%= image_tag(@discussion.cover.url(:thumb), width: "100%") %>
+    </div>
+
+    <div class="panel-body">
+      <div class="col-sm-8">
+        <h1 class="discussion-title" style="margin-top: 0px;"><%= @discussion.title %></h1>
+        <% if @discussion.description.blank? %>
+          <% if user_signed_in? %>    
+            <% if current_user == @discussion.user %>
+              <%= link_to "Add description", edit_discussion_path(@discussion), class: "btn btn-xs btn-success" %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p><%= @discussion.description %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
