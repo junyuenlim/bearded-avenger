@@ -67,7 +67,7 @@ class DiscussionsController < ApplicationController
 
     respond_to do |format|
       if @discussion.update_attributes(params[:discussion])
-        @discussion.create_activity :create, owner: current_user
+        # @discussion.create_activity :update, owner: current_user
         format.html { redirect_to @discussion, notice: 'Discussion was successfully updated.' }
         format.json { head :no_content }
       else

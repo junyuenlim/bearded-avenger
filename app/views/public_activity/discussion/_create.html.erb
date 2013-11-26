@@ -2,7 +2,7 @@
 	<span class="text-muted">created a discussion</span></br>
 
 	<% if activity.trackable %>
-	  <h3><%= link_to activity.trackable.discussion.title, activity.trackable.discussion %></h3>
+	  <h4 style="margin-top: 0px;"><%= link_to activity.trackable.title, activity.trackable %></h4>
 	<% else %>
 	  <span class="text-danger">which has been removed</span>
 	<% end %>
