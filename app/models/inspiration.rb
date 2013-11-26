@@ -4,7 +4,7 @@ class Inspiration < ActiveRecord::Base
   is_impressionable
   acts_as_votable
   
-  attr_accessible :description, :title, :user_id, :discussion_id, :image, :image_remote_url
+  attr_accessible :description, :title, :user_id, :discussion_id, :image, :image_remote_url, :user_id
 
   validates :user_id, presence: true
   validates :discussion_id, presence: true

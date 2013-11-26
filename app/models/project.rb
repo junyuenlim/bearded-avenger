@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   is_impressionable
   acts_as_votable
 
-  attr_accessible :description, :title, :thumbnail, :tag_list, :published
+  attr_accessible :description, :title, :thumbnail, :tag_list, :published, :user_id
 
   acts_as_taggable
   acts_as_taggable_on :categories
