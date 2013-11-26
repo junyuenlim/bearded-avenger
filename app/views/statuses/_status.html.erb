@@ -1,0 +1,14 @@
+<div class="panel-body">
+	<p class="lead"><%= status.description %></p>
+</div>
+
+<div class="panel-footer">
+	<span class="text-muted"><small><%= time_ago_in_words(status.updated_at) %> ago</small></span>
+
+	<% if user_signed_in? %>
+	    <% if current_user == @project.user %>
+	    	<button class="btn btn-xs btn-info pull-right" data-toggle="modal" data-target="#create">New Status</button>
+	    <% end %>
+	<% end %>
+
+</div>

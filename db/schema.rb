@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125135511) do
+ActiveRecord::Schema.define(:version => 20131126065811) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -140,6 +140,14 @@ ActiveRecord::Schema.define(:version => 20131125135511) do
   add_index "relationships", ["followedproject_id", "follower_id"], :name => "index_relationships_on_followedproject_id_and_follower_id", :unique => true
   add_index "relationships", ["followedproject_id"], :name => "index_relationships_on_followedproject_id"
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "statuses", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "project_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

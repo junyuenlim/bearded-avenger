@@ -17,4 +17,5 @@ class Project < ActiveRecord::Base
   belongs_to :user
   # has_many :relationships, foreign_key: "followedproject_id"
   has_many :followers, through: :relationships, source: :user
+  has_many :statuses
 end

@@ -20,6 +20,10 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    @statuses = @project.statuses.all
+
+    @status = @project.statuses.new
+
     impressionist(@project)
 
     respond_to do |format|

@@ -1,0 +1,29 @@
+<!-- STATUS CARD -->
+<% unless @project.statuses.count == 0 %>
+<div class="well well-sm">
+
+	<%= render @statuses.last %>
+
+</div>
+<% else %>
+	<% if user_signed_in? %>
+	    <% if current_user == @project.user %>
+	    	<%= render 'statuses/form' %>
+	    <% end %>
+	<% end %>
+<% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="createLabel" aria-hidden="true">	
+	<div class="modal-dialog" style="margin-top: 10%;">
+	  <div class="modal-content">
+	    <div class="panel-body">
+		  <% if user_signed_in? %>
+		    <% if current_user == @project.user %>
+		      <%= render 'statuses/form' %>
+		    <% end %>
+		  <% end %>
+		</div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
