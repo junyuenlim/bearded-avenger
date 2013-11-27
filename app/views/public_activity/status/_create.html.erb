@@ -1,0 +1,16 @@
+<td>
+	<span class="text-muted">Latest status on</span>
+	<% if activity.recipient %>
+	  <%= link_to activity.recipient.title, activity.recipient %>
+	  
+	  <blockquote>
+		<p><%= activity.trackable.description %></p>
+		<small><%= time_ago_in_words(activity.trackable.created_at) %> ago</small>
+	  </blockquote>
+
+	  
+	<% else %>
+	  <span class="text-danger">a status which has been removed</span>
+	<% end %>
+</td>
+<td><span class="glyphicon glyphicon-comment" style="color: #ccc;"></span></td>

@@ -9,6 +9,26 @@
 				<% end %>
 			</div>
 		</div>
+
+		<table class="table">
+
+			<thead>
+				<tr>
+					<th></th>
+				    <th><h4>PROJECTS</h4></th>
+				    <th></th>
+			    </tr>
+			</thead>
+			<tbody>
+			<% @activities.where(recipient_type: "Project").each do |activity| %>
+			  <tr>
+			  	<td><%= image_tag activity.recipient.thumbnail.url(:medium), width: "100" %></td>
+			  	<%= render_activity activity %>
+			  </tr>
+			<% end %>
+			</tbody>
+
+		</table>
 	</div>
 	
 	<div class="col-xs-6">

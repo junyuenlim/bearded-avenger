@@ -6,6 +6,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
+        @status.create_activity :create, owner: current_user, recipient: @project
         format.html { redirect_to @project, notice: 'Updated status.' }
         format.json { render json: @status, status: :created, location: @status }
       else

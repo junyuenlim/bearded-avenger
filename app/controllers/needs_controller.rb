@@ -6,6 +6,7 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       if @need.save
+        @need.create_activity :create, owner: current_user, recipient: @project
         format.html { redirect_to @project, notice: 'Updated need.' }
         format.json { render json: @need, need: :created, location: @need }
       else
