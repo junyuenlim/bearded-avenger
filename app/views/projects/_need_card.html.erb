@@ -1,14 +1,46 @@
 <div class="panel panel-default">
 	<div class="panel-heading">WHAT WE NEED</div>
-	<ul class="list-group">
 
-    <li class="list-group-item">
-	    <p><strong>Followers</strong> (<%= @project.likes.size %>/10)</p>
-	    <div class="progress">
-	      <div id="followersprogress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= number_with_precision(((@project.likes.size.to_f / 10) * 100), :precision => 0) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= number_to_percentage((@project.likes.size.to_f / 10 * 100), :precision => 2) %>;">
-	      </div>
-	    </div>
-		</li>
-  
-  </ul>
+	<table class="table">
+		<tbody>
+			<tr>
+				<div class="panel-body">
+				    <p><strong>Followers</strong> (<%= @project.likes.size %>/10)</p>
+				    <div class="progress">
+				      <div id="followersprogress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= number_with_precision(((@project.likes.size.to_f / 10) * 100), :precision => 0) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= number_to_percentage((@project.likes.size.to_f / 10 * 100), :precision => 2) %>;">
+				      </div>
+				    </div>
+			    </div>
+			</tr>
+
+			<%= render @needs %>
+
+			<% if user_signed_in? %>
+			<% if current_user == @project.user %>		
+			<tr>
+				<td>
+				    <button class="btn btn-xs btn-info pull-right" data-toggle="modal" data-target="#need">List what you need</button>  
+				</td>
+			</tr>
+			<% end %>
+			<% end %>
+
+		</tbody>
+	</table>
+
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="need" tabindex="-1" role="dialog" aria-labelledby="createLabel" aria-hidden="true">
+	<div class="modal-dialog" style="margin-top: 10%;">
+	  <div class="modal-content">
+	    <div class="panel-body">
+		  <% if user_signed_in? %>
+		    <% if current_user == @project.user %>
+		     <%= render 'needs/form' %>
+		    <% end %>
+		  <% end %>
+		</div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

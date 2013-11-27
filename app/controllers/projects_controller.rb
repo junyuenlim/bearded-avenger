@@ -22,7 +22,11 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @statuses = @project.statuses.all
 
+    @project = Project.find(params[:id])
+    @needs = @project.needs.all
+
     @status = @project.statuses.new
+    @need = @project.needs.new
 
     impressionist(@project)
 
@@ -36,6 +40,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = current_user.projects.new
+    3.times { @project.needs.build }
 
     respond_to do |format|
       format.html # new.html.erb

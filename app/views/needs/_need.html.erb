@@ -1,0 +1,15 @@
+<tr>
+	<td class="text-warning" style="padding-left: 15px;"><%= need.title %></td>
+</tr>
+
+
+<% if user_signed_in? %>
+    <% if current_user.superadmin? %>
+    	<!-- PROGRESS BAR?
+    	<div class="progress">
+			<div id="progress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= number_with_precision(((need.current.to_f / need.goal.to_f) * 100), :precision => 0) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= number_to_percentage((need.current.to_f / need.goal.to_f * 100), :precision => 2) %>;">
+			</div>
+		</div>
+	-->
+    <% end %>
+<% end %>

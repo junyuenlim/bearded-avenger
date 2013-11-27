@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project_id: 1
+  title: MyString
+  start: MyString
+  current: MyString
+  goal: MyString
+  success: false
+
+two:
+  project_id: 1
+  title: MyString
+  start: MyString
+  current: MyString
+  goal: MyString
+  success: false
