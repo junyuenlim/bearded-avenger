@@ -167,6 +167,16 @@ ul.nav-li {padding-left: 0px;}
 	border-radius: 3px;
 }
 
+#map-canvas {
+  height: 100%;
+  position: absolute; 
+  top: 0; 
+  bottom: -200px; 
+  left: 0; 
+  right: 0; 
+  z-index: -100;
+}
+
 /*-- PROJECT --*/
 #project .panel-default > .panel-heading {color: #aaa; font-size: 11px; padding: 5px 20px;}
 #project img {width: 100%;}

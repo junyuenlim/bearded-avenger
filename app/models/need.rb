@@ -3,5 +3,7 @@ class Need < ActiveRecord::Base
   
   attr_accessible :current, :goal, :project_id, :start, :title, :success
 
+  validates :project_id, presence: true
+
   belongs_to :project
 end

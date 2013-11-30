@@ -1,14 +1,25 @@
 <% title "Dashboard" %>
 
-<div class="container">
-	<div class="col-xs-6">
-		<div style="background: #f8f8f8; height: 150px;">
-			<div class="panel-body text-center" style="padding-top: 50px;">
-				<%= link_to projects_path, class: "btn btn-lg btn-success" do %>
-					Projects
-				<% end %>
-			</div>
+<div class="row" style="background: #f8f8f8;">
+
+	<div class="container" style="background: url('/assets/graphics/dashboard.png') no-repeat fixed 40% 0%; height: 300px;">
+		
+		<div class="col-xs-6 text-center" style="padding-top: 220px;">
+			<%= link_to projects_path, class: "btn btn-lg btn-success" do %>
+			Projects
+			<% end %>
 		</div>
+		
+		<div class="col-xs-6 text-center" style="padding-top: 220px;">
+			<%= link_to discussions_path, class: "btn btn-lg btn-success" do %>
+			Discussions
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="container" style="margin-top: 40px">
+	<div class="col-xs-6">
 
 		<table class="table">
 
@@ -32,13 +43,6 @@
 	</div>
 	
 	<div class="col-xs-6">
-		<div style="background: #f8f8f8; height: 150px;">
-			<div class="panel-body text-center" style="padding-top: 50px;">
-				<%= link_to discussions_path, class: "btn btn-lg btn-success" do %>
-					Discussions
-				<% end %>
-			</div>
-		</div>
 
 		<%= render 'pages/activity' %>
 
