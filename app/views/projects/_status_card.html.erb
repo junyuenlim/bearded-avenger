@@ -8,7 +8,9 @@
 <% else %>
 	<% if user_signed_in? %>
 	    <% if current_user == @project.user %>
+	    	<div class="panel-body">
 	    	<%= render 'statuses/form' %>
+	    	</div>
 	    <% end %>
 	<% end %>
 <% end %>
