@@ -1,10 +1,10 @@
 <td>
-	<span class="text-muted">Owner added a need to </span></br>
+	<span class="text-muted">What we need for </span>
 	<% if activity.recipient %>
 	  <%= link_to activity.recipient.title, activity.recipient %>
 	  
 	  <blockquote>
-		<p><%= activity.trackable.need %></p>
+		<p><%= activity.trackable.title %></p>
 		<small><%= time_ago_in_words(activity.trackable.created_at) %> ago</small>
 	  </blockquote>
 

@@ -33,6 +33,7 @@ ActiveadminTest::Application.routes.draw do
   root :to => 'pages#welcome'
 
   get 'about' => "pages#about"
+  get 'stakeholders/corporations/1' => "pages#stakeholder"
   get 'category/:tag', to: 'projects#index', as: :tag
 
   ActiveAdmin.routes(self)
