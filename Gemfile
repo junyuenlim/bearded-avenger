@@ -47,6 +47,7 @@ gem "cities", "~> 0.2.0"
 
 # Heroku
 gem 'rails_12factor'
+gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.

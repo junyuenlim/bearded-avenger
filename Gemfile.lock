@@ -139,6 +139,7 @@ GEM
     mime-types (1.25)
     multi_json (1.8.2)
     multipart-post (1.2.0)
+    newrelic_rpm (3.7.0.177)
     nokogiri (1.5.10)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -251,6 +252,7 @@ DEPENDENCIES
   jquery-turbolinks
   masonry-rails (~> 0.2.0)
   meta_search (>= 1.1.0.pre)
+  newrelic_rpm
   omniauth
   omniauth-facebook
   paperclip (~> 3.0)
