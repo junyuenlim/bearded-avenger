@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation, :current_password
   attr_accessible :email, :password, :password_confirmation, :current_password, :remember_me, :provider, :uid, :name, :first_name,
                     :middle_name, :last_name, :gender, :locale, :username, :timezone, :bio, :birthday, :hometown, :location,
-                    :fb_link, :currency, :fb_verified, :avatar
+                    :fb_link, :currency, :fb_verified, :avatar, :neighbourhood_name, :neighbourhood_id
   # attr_accessible :title, :body
 
   has_many :discussions
@@ -26,6 +26,17 @@ class User < ActiveRecord::Base
   validates_attachment :avatar, 
                         content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] },
                         size: { less_than: 2.megabytes }
+
+  belongs_to :neighbourhood
+  validates :neighbourhood_id, presence: true
+
+  def neighbourhood_name
+    neighbourhood.try(:name)
+  end
+  
+  def neighbourhood_name=(name)
+    self.neighbourhood = Neighbourhood.find_or_create_by_name(name) if name.present?
+  end
 
   def following_project?(project)
     relationships.find_by_followedproject_id(project.id)

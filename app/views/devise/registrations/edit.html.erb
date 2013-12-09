@@ -39,17 +39,22 @@
 
                 <div class="form-group">
                   <%= f.label :first_name %>
-                  <%= f.text_field :first_name, class: "form-control", :autofocus => true %>
+                  <%= f.text_field :first_name, class: "form-control" %>
                 </div>
 
                 <div class="form-group">
                   <%= f.label :last_name %>
-                  <%= f.text_field :last_name, class: "form-control", :autofocus => true %>
+                  <%= f.text_field :last_name, class: "form-control" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :neighbourhood_name %>
+                  <%= f.text_field :neighbourhood_name, data: {autocomplete_source: neighbourhoods_path}, class: "form-control", :autofocus => true %>
                 </div>
 
                 <div class="form-group">
                   <%= f.label :location %>
-                  <%= f.text_field :location, class: "form-control", placeholder: "City", :autofocus => true %>
+                  <%= f.text_field :location, class: "form-control", placeholder: "City" %>
                 </div>
             </div>
 

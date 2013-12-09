@@ -21,4 +21,22 @@ class UsersController < ApplicationController
     impressionist(@user)
     @projects = @user.projects
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @neighbourhood = current_user.neighbourhoods.find(params[:id])
+
+    respond_to do |format|
+      if @neighbourhood.update_attributes(params[:neighbourhood])
+        format.html { redirect_to @neighbourhood, notice: 'neighbourhood was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @neighbourhood.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end

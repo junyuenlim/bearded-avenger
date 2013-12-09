@@ -1,5 +1,6 @@
 ActiveadminTest::Application.routes.draw do
 
+  resources :neighbourhoods
   resources :activities
   resources :projects do
     member do
