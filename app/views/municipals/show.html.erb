@@ -1,6 +1,27 @@
-<div class="row">
+<% title @municipal.acronym %>
+
+<div class="row" style="padding-top: 50px;">
 	<div class="container text-center">
 	<h1><%= @municipal.name %></h1>
 	<h2 class="lead">Coming Soon</h2>
+	</div>
+</div>
+
+<hr>
+
+<div class="container">
+	<div class="col-xs-4 col-xs-offset-4">
+		<div class="panel panel-default">
+			
+			<div class="panel-heading"><span class="glyphicon glyphicon-map-marker"></span> Neighbourhoods</div>
+
+			<div class="panel-body">
+				<ul>
+				<% @neighbourhoods.each do |neighbourhood| %>
+					<li><%= link_to neighbourhood.name, neighbourhood %></li>
+				<% end %>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>

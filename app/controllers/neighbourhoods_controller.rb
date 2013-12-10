@@ -11,7 +11,7 @@ class NeighbourhoodsController < ApplicationController
 
 		respond_to do |format|
 		  if @neighbourhood.save
-		    format.html { redirect_to root_path, notice: 'Neighbourhood added! Thanks!' }
+		    format.html { redirect_to neighbourhoods_path, notice: 'Neighbourhood added! Thanks!' }
 		    format.json { render json: @neighbourhood, neighbourhood: :created, location: @neighbourhood }
 		  else
 		    format.html { render action: "new" }

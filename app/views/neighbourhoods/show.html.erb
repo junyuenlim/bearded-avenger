@@ -1,34 +1,66 @@
+<% title @neighbourhood.name %>
+
 <div class="row">
-	<div class="container text-center">
+	<div class="container text-center" style="padding-top: 50px;">
 	<h1><%= @neighbourhood.name %></h1>
 	<h2 class="lead">Coming Soon</h2>
 	</div>
 </div>
 
-<div class="container">
+<hr>
 
-	<div class="col-xs-5">
-		<%= form_for(@neighbourhood) do |f| %>
-		  <% if @neighbourhood.errors.any? %>
-		    <div id="error_explanation">
-		      <h2><%= pluralize(@neighbourhood.errors.count, "error") %> prohibited this neighbourhood from being saved:</h2>
+<div class="container text-center">
+	<div class="col-xs-4 col-xs-offset-4">
+		<div class="panel panel-default">
+			<div class="panel-heading"><span class="glyphicon glyphicon-user"></span></div>
 
-		      <ul>
-		      <% @neighbourhood.errors.full_messages.each do |msg| %>
-		        <li><%= msg %></li>
-		      <% end %>
-		      </ul>
-		    </div>
-		  <% end %>
+			<% unless @neighbourhood.users.count == 0 %>
+			<div class="panel-body">
+				<p>Residents:<br>
+					<% for user in @neighbourhood.users %>
+						<%= link_to image_tag(user.avatar.url(:thumb), :width => "30"), user, :rel => "tooltip", :data => { :delay => 20, :title => user.first_name } %>
+					<% end %>
+				</p>
+			</div>
+			<hr>
+			<% end %>
+			
+			<div class="panel-body">
+				
+				<p>Local government:<br>
+		<% if @neighbourhood.municipal_id.blank? %>
 
-		  <div class="form-group" id="wysihtml5">
-		    <%= f.label :municipal_id, "Local Government" %>
-		    <%= f.collection_select(:municipal_id, Municipal.all, :id, :name, {:include_blank => "Update Local Government"}, {:class=>'form-control'}) %>
-		  </div>
+			<%= form_for(@neighbourhood) do |f| %>
+			  <% if @neighbourhood.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@neighbourhood.errors.count, "error") %> prohibited this neighbourhood from being saved:</h2>
 
-		  <div class="form-group">
-		    <%= f.submit "Update Municipal", class: "btn btn-primary" %>
-		  </div>
+			      <ul>
+			      <% @neighbourhood.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+
+			  <div class="form-group" id="wysihtml5">
+			    <%= f.collection_select(:municipal_id, Municipal.all, :id, :name, {:include_blank => "Update Local Government"}, {:class=>'form-control'}) %>
+			  </div>
+
+			  <div class="form-group">
+			    <%= f.submit "Update Municipal", class: "btn btn-info" %>
+			  </div>
+			<% end %>
+
+		<% else %>
+			
+					
+
+					<p><%= link_to @neighbourhood.municipal_name, @neighbourhood.municipal %></p>
+
+				</div>
+			</div>
+			</div>
 		<% end %>
-	</div>
+
 </div>
