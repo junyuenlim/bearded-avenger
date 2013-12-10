@@ -14,6 +14,12 @@
   <div class="form-group" id="wysihtml5">
     <%= f.label :name, "Add Neighbourhood" %>
     <%= f.text_field :name, data: {autocomplete_source: neighbourhoods_path}, class: "form-control" %>
+    <span class="help-block">e.g. Taman Tun Dr Ismail, Pandan Indah, PJS 7 Subang Jaya, USJ 11, Taman Bukit Maluri, Taman Overseas Union</span>
+  </div>
+
+  <div class="form-group" id="wysihtml5">
+    <%= f.collection_select(:municipal_id, Municipal.all, :id, :name_acronym, {:include_blank => "Select Local Government"}, {:class=>'form-control'}) %>
+    <span class="help-block">e.g. MPAJ, DBKL, MPSJ, MPPJ</span>
   </div>
 
   <div class="form-group">

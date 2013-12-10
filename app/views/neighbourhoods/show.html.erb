@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="container text-center">
+	<h1><%= @neighbourhood.name %></h1>
+	<h2 class="lead">Coming Soon</h2>
+	</div>
+</div>
+
+<div class="container">
+
+	<div class="col-xs-5">
+		<%= form_for(@neighbourhood) do |f| %>
+		  <% if @neighbourhood.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@neighbourhood.errors.count, "error") %> prohibited this neighbourhood from being saved:</h2>
+
+		      <ul>
+		      <% @neighbourhood.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+
+		  <div class="form-group" id="wysihtml5">
+		    <%= f.label :municipal_id, "Local Government" %>
+		    <%= f.collection_select(:municipal_id, Municipal.all, :id, :name, {:include_blank => "Update Local Government"}, {:class=>'form-control'}) %>
+		  </div>
+
+		  <div class="form-group">
+		    <%= f.submit "Update Municipal", class: "btn btn-primary" %>
+		  </div>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+<% title "Neighbourhoods" %>
+
+<div class="container" style="padding: 50px 0px;">
+	<div class="col-xs-4" style="padding: 20px 0px;">
+		<%= image_tag("/assets/graphics/neighbourhoods.png", width: "250") %>
+	</div>
+	<div class="col-xs-5">
+		<h2>Help map neighbourhoods <small>in Kuala Lumpur & Selangor</small></h2>
+		<br>
+		<%= render 'neighbourhoods/form' %>
+	</div>
+</div>
+
+<hr>
+
+<div class="container">
+	<div class="col-xs-6">
+		<table class="table">
+			<thead>
+				<th class="lead">NEIGHBOURHOODS</th>
+			</thead>
+			<tbody>
+				<% @neighbourhoods.each do |neighbourhood| %>
+				<tr>
+					<td><%= link_to neighbourhood.name, neighbourhood %><br>
+						<% for user in neighbourhood.users %>
+							<%= link_to image_tag(user.avatar.url(:thumb), :width => "30"), user, :rel => "tooltip", :data => { :delay => 20, :title => user.first_name } %>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-xs-6">
+		<table class="table">
+			<thead>
+				<th class="lead">MUNICIPALS</th>
+				<th class="lead">Neighbourhoods</th>
+			</thead>
+			<tbody>
+				<% @municipals.each do |municipal| %>
+				<tr>
+					<td><%= link_to municipal.name, municipal %></td>
+					<td><ul>
+						<% for neighbourhood in municipal.neighbourhoods %>
+							<li><%= link_to neighbourhood.name, neighbourhood %></li>
+						<% end %></ul>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
