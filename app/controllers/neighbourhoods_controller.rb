@@ -22,6 +22,9 @@ class NeighbourhoodsController < ApplicationController
 
 	def show
 		@neighbourhood = Neighbourhood.find(params[:id])
+		if request.path != neighbourhood_path(@neighbourhood)
+			redirect_to @neighbourhood, status: :moved_permanently
+		end
 
 		respond_to do |format|
 			format.html # show.html.erb

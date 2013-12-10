@@ -14,6 +14,7 @@ group :production do
 end
 
 gem 'bootstrap-sass', '~> 3.0.2.1'
+gem 'friendly_id', '~> 4.0.10.1'
 
 # Active Admin + Required Gems
 gem 'activeadmin'

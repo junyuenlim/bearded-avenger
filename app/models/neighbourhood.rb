@@ -1,4 +1,7 @@
 class Neighbourhood < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :history
+  
   attr_accessible :name, :municipal_id
 
   validates :name, presence: true
